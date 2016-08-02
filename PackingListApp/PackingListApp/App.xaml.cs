@@ -7,11 +7,15 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using PackingListApp.Resources;
+using Microsoft.WindowsAzure.MobileServices;
 
 namespace PackingListApp
 {
     public partial class App : Application
     {
+        //Dit kan door klasses worden aangesproekn op data toe te voegen of te verwijderen
+        public static MobileServiceClient MobileService =
+            new MobileServiceClient("https://travellistservice.azurewebsites.net");
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
         /// </summary>
