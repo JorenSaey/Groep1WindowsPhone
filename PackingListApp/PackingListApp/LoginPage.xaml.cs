@@ -7,30 +7,21 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using PackingListApp.Resources;
 
 namespace PackingListApp
 {
-    public partial class MainPage : PhoneApplicationPage
+    public partial class Page1 : PhoneApplicationPage
     {
-        // Constructor
-        public MainPage()
+        public Page1()
         {
             InitializeComponent();
-
-            // Sample code to localize the ApplicationBar
-            //BuildLocalizedApplicationBar();
         }
-
         public void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            String test = TxtboxUsername.Text;
-            TxtPassword.Text = test;
-
+            
 
         }
 
-      
     }
 }
