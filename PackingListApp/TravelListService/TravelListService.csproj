@@ -155,9 +155,16 @@
     <Compile Include="App_Start\Startup.MobileApp.cs" />
     <Compile Include="Controllers\TodoItemController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
-    <Compile Include="DataObjects\TodoItem.cs" />
+    <Compile Include="DataObjects\Categorie.cs" />
+    <Compile Include="DataObjects\Item.cs" />
+    <Compile Include="DataObjects\Travel.cs" />
     <Compile Include="DataObjects\User.cs" />
-    <Compile Include="Models\TravelListServiceContext.cs" />
+    <Compile Include="Models\DAL\Mapper\CategorieMapper.cs" />
+    <Compile Include="Models\DAL\Mapper\ItemMapper.cs" />
+    <Compile Include="Models\DAL\Mapper\TravelMapper.cs" />
+    <Compile Include="Models\DAL\Mapper\UserMapper.cs" />
+    <Compile Include="Models\DAL\TravelListServiceInitializer.cs" />
+    <Compile Include="Models\DAL\TravelListServiceContext.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

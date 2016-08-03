@@ -4,8 +4,9 @@ using System.Linq;
 using Microsoft.Azure.Mobile.Server;
 using Microsoft.Azure.Mobile.Server.Tables;
 using TravelListServiceService.DataObjects;
+using System.Reflection;
 
-namespace TravelListServiceService.Models
+namespace TravelListServiceService.Models.DAL
 {
     public class TravelListServiceContext : DbContext
     {
@@ -22,13 +23,15 @@ namespace TravelListServiceService.Models
         {
         } 
 
-        public DbSet<TodoItem> TodoItems { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Add(
                 new AttributeToColumnAnnotationConvention<TableColumnAttribute, string>(
                     "ServiceTableColumn", (property, attributes) => attributes.Single().ColumnType.ToString()));
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Configurations.AddFromAssembly(Assembly.GetExecutingAssembly());
         }
     }
 
