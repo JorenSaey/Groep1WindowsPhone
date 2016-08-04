@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace PackingListApp.Model
 {
-    class todoItem
+    class todoItem : INotifyPropertyChanged
     {
         //ATTRIBUTEN
         //public Guid Id { get; set; }
         public string Name { get; set; }
-        public int Id { get; set; }
+        public string Id { get; set; }
         public int AmountNeeded { get; set; }
         public int AmountCollected { get; set; }
         //CONSTRUCTOR
@@ -22,6 +23,9 @@ namespace PackingListApp.Model
             AmountNeeded = amountNeeded;
             AmountCollected = 0;
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         //ANDERE METHODES
         public void Add()
         {
@@ -34,6 +38,14 @@ namespace PackingListApp.Model
         public bool IsCompleted()
         {
             return AmountCollected == AmountNeeded;
+        }
+        public void NotifyPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this,
+                    new PropertyChangedEventArgs(propertyName));
+            }
         }
     }
 }

@@ -24,6 +24,9 @@ namespace PackingListApp
             InitializeComponent();
             mainViewModel = new MainViewModel();
 
+            mainViewModel.getAzureData();
+         
+
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
         }
@@ -31,9 +34,10 @@ namespace PackingListApp
         public void Valideer_Login(object sender, RoutedEventArgs e)
         {
 
-            username = TxtboxUsername.Text;
+            mainViewModel.loadData();
+            txtUsername.Text = mainViewModel.todo.Name;
+           // username = mainViewModel.todo.Name;
             password = PwBoxPasswoord.Password;
-            mainViewModel.getAzureData();
             //valideer
 
 

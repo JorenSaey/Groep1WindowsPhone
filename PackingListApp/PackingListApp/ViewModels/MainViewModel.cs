@@ -10,7 +10,10 @@ namespace PackingListApp.ViewModels
 {
     class MainViewModel
     {
+        public todoItem todo = null;
+
         public static ObservableCollection<todoItem> ItemCollection { set; get; }
+        IEnumerable<todoItem> test;
 
         public MainViewModel()
         {
@@ -25,9 +28,10 @@ namespace PackingListApp.ViewModels
 
 		public async void getAzureData()
         {
-			IEnumerable<todoItem> test =await App.MobileService.GetTable<todoItem>().ToEnumerableAsync();
+			test =await App.MobileService.GetTable<todoItem>().ToEnumerableAsync();
 
-         
+            todo = test.FirstOrDefault();
+            
         }
     }
 }
