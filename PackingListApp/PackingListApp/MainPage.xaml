@@ -15,7 +15,7 @@
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid>
-        <Button x:Name="btnLogin" Content="Login" HorizontalAlignment="Left" Margin="77,554,0,0" VerticalAlignment="Top" Click="Button_Click" Width="165" />
+        <Button x:Name="btnLogin" Content="Login" HorizontalAlignment="Left" Margin="77,554,0,0" VerticalAlignment="Top" Click="Valideer_Login" Width="165" />
         <TextBlock x:Name="txtUsername" HorizontalAlignment="Left" Margin="77,204,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" Height="38" Width="128" FontSize="24"/>
         <TextBlock x:Name="TxtPassword" HorizontalAlignment="Left" Margin="77,371,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Height="38" Width="128" FontSize="24"/>
         <TextBox x:Name="TxtboxUsername" HorizontalAlignment="Left" Margin="77,247,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="348"/>

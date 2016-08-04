@@ -9,6 +9,7 @@ using Microsoft.Azure.Mobile.Server.Config;
 using TravelListServiceService.DataObjects;
 using TravelListServiceService.Models;
 using Owin;
+using TravelListServiceService.Models.DAL;
 
 namespace TravelListServiceService
 {
@@ -53,15 +54,15 @@ namespace TravelListServiceService
     {
         protected override void Seed(TravelListServiceContext context)
         {
-            List<TodoItem> todoItems = new List<TodoItem>
+            List<Item> todoItems = new List<Item>
             {
-                new TodoItem { Id = Guid.NewGuid().ToString(), Text = "First item", Complete = false },
-                new TodoItem { Id = Guid.NewGuid().ToString(), Text = "Second item", Complete = false },
+                new Item { Id = Guid.NewGuid().ToString(), Name = "First item", AmountCollected = 1,AmountNeeded=2 },
+                new Item { Id = Guid.NewGuid().ToString(), Name = "Second item", AmountCollected = 2, AmountNeeded =3 },
             };
 
-            foreach (TodoItem todoItem in todoItems)
+            foreach (Item todoItem in todoItems)
             {
-                context.Set<TodoItem>().Add(todoItem);
+                context.Set<Item>().Add(todoItem);
             }
 
             base.Seed(context);

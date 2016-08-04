@@ -8,14 +8,21 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using PackingListApp.Resources;
 using Microsoft.WindowsAzure.MobileServices;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace PackingListApp
 {
     public partial class App : Application
     {
         //Dit kan door klasses worden aangesproekn op data toe te voegen of te verwijderen
-        public static MobileServiceClient MobileService =
-            new MobileServiceClient("https://travellistservice.azurewebsites.net");
+        // public static MobileServiceClient MobileService =
+        //    new MobileServiceClient("https://travellistservice.azurewebsites.net");
+
+        public static MobileServiceClient MobileService = new MobileServiceClient("http://localhost:59230", new TodoItemExpandHandler());
+
+        //public static MobileServiceClient MobileService = new MobileServiceClient("http://localhost:59230");
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
         /// </summary>
@@ -230,6 +237,39 @@ namespace PackingListApp
                 }
 
                 throw;
+            }
+        }
+        public class TodoItemExpandHandler : DelegatingHandler
+        {
+            protected override async Task<HttpResponseMessage>
+            SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+            {
+                bool requestToTodoTable = request.RequestUri.PathAndQuery
+                    .StartsWith("/tables/todoItem", StringComparison.OrdinalIgnoreCase)
+                        && request.Method == HttpMethod.Get;
+                if (requestToTodoTable)
+                {
+                    UriBuilder builder = new UriBuilder(request.RequestUri);
+                    string query = builder.Query;
+                    if (!query.Contains("$expand"))
+                    {
+                        if (string.IsNullOrEmpty(query))
+                        {
+                            query = string.Empty;
+                        }
+                        else
+                        {
+                            query = query + "&";
+                        }
+
+                        query = query + "$expand=items";
+                        builder.Query = query.TrimStart('?');
+                        request.RequestUri = builder.Uri;
+                    }
+                }
+
+                var result = await base.SendAsync(request, cancellationToken);
+                return result;
             }
         }
     }

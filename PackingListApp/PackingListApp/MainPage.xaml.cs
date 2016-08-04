@@ -13,6 +13,9 @@ namespace PackingListApp
 {
     public partial class MainPage : PhoneApplicationPage
     {
+
+       private String username;
+        private String password;
         // Constructor
         public MainPage()
         {
@@ -22,11 +25,12 @@ namespace PackingListApp
             //BuildLocalizedApplicationBar();
         }
 
-        public void Button_Click(object sender, RoutedEventArgs e)
+        public void Valideer_Login(object sender, RoutedEventArgs e)
         {
 
-            String test = TxtboxUsername.Text;
-            TxtPassword.Text = test;
+            username = TxtboxUsername.Text;
+            password = PwBoxPasswoord.Password;
+            //valideer
 
 
         }

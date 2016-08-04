@@ -17,21 +17,22 @@ namespace TravelListServiceService.Models.DAL
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
 
-        private const string connectionStringName = "Name=MS_TravelList";
+        private const string connectionStringName = "Name=MS_TableConnectionString";
 
         public TravelListServiceContext() : base(connectionStringName)
         {
-        } 
+        }
 
-        public DbSet<User> Users { get; set; }
+        //   public DbSet<User> Users { get; set; 
+        public DbSet<Item> Items { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Add(
                 new AttributeToColumnAnnotationConvention<TableColumnAttribute, string>(
                     "ServiceTableColumn", (property, attributes) => attributes.Single().ColumnType.ToString()));
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-            modelBuilder.Configurations.AddFromAssembly(Assembly.GetExecutingAssembly());
+            //modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+          //  modelBuilder.Configurations.AddFromAssembly(Assembly.GetExecutingAssembly());
         }
     }
 
