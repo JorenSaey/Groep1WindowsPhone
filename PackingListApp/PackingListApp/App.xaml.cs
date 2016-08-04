@@ -20,9 +20,9 @@ namespace PackingListApp
         // public static MobileServiceClient MobileService =
         //    new MobileServiceClient("https://travellistservice.azurewebsites.net");
 
-        public static MobileServiceClient MobileService = new MobileServiceClient("http://localhost:59230", new TodoItemExpandHandler());
+     //   public static MobileServiceClient MobileService = new MobileServiceClient("http://localhost:59230", new TodoItemExpandHandler());
 
-        //public static MobileServiceClient MobileService = new MobileServiceClient("http://localhost:59230");
+        public static MobileServiceClient MobileService = new MobileServiceClient("http://localhost:59230");
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
         /// </summary>

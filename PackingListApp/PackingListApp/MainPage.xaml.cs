@@ -7,7 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using PackingListApp.Resources;
+using PackingListApp.ViewModels;
 
 namespace PackingListApp
 {
@@ -16,10 +16,13 @@ namespace PackingListApp
 
        private String username;
         private String password;
+        private MainViewModel mainViewModel;
+
         // Constructor
         public MainPage()
         {
             InitializeComponent();
+            mainViewModel = new MainViewModel();
 
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
@@ -30,6 +33,7 @@ namespace PackingListApp
 
             username = TxtboxUsername.Text;
             password = PwBoxPasswoord.Password;
+            mainViewModel.getAzureData();
             //valideer
 
 
