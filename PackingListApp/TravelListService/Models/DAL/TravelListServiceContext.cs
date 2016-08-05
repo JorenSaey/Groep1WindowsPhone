@@ -21,11 +21,12 @@ namespace TravelListServiceService.Models.DAL
 
         public TravelListServiceContext() : base(connectionStringName)
         {
+            Database.SetInitializer<TravelListServiceContext>(null);
         }
 
         //   public DbSet<User> Users { get; set; 
         public DbSet<Item> Items { get; set; }
-
+        public DbSet<User> Users { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Add(

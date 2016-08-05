@@ -50,21 +50,68 @@ namespace TravelListServiceService
         }
     }
 
-    public class TravelListServiceInitializer : CreateDatabaseIfNotExists<TravelListServiceContext>
+    public class TravelListServiceInitializer : DropCreateDatabaseAlways<TravelListServiceContext>
     {
         protected override void Seed(TravelListServiceContext context)
         {
+
+
+
+            User user1 = new User { Id = Guid.NewGuid().ToString(), Email = "anton.rooseleer@gmail.com", FirstName = "anton", LastName = "rooseleer", Password = "pw" };
+            User user2 = new User { Id = Guid.NewGuid().ToString(), Email = "test@gmail.com", FirstName = "test", LastName = "account", Password = "pw" };
+
+
+
+            Travel travel1 = new Travel { Id = Guid.NewGuid().ToString(), Name = "Belgium", Destination = "Brussels" };
+            Travel travel2 = new Travel { Id = Guid.NewGuid().ToString(), Name = "UK", Destination = "London" };
+
+
+
+
+
+            Categorie categorie1 = new Categorie { Id = Guid.NewGuid().ToString(), Name = "Documenten" };
+
+            Categorie categorie2 = new Categorie { Id = Guid.NewGuid().ToString(), Name = "Kleren" };
+
+            Item item1 =
+                new Item { Id = Guid.NewGuid().ToString(), Name = "First item", AmountCollected = 1, AmountNeeded = 2 };
+
+            Item item2 = new Item { Id = Guid.NewGuid().ToString(), Name = "First item", AmountCollected = 1, AmountNeeded = 2 };
+
+            categorie1.Items.Add(item1);
+            categorie2.Items.Add(item2);
+            travel1.Categories.Add(categorie1);
+            travel2.Categories.Add(categorie2);
+            user1.Travels.Add(travel1);
+            user2.Travels.Add(travel2);
+            List<User> users = new List<User>
+            {
+
+            };
+            users.Add(user1);
+            users.Add(user2);
+                
+
+
             List<Item> todoItems = new List<Item>
             {
-                new Item { Id = Guid.NewGuid().ToString(), Name = "First item", AmountCollected = 1,AmountNeeded=2 },
+                new Item { Id = Guid.NewGuid().ToString(), Name = "Anton", AmountCollected = 1,AmountNeeded=2 },
                 new Item { Id = Guid.NewGuid().ToString(), Name = "Second item", AmountCollected = 2, AmountNeeded =3 },
             };
+
+            for (int i = 0; i < 2; i++)
+        
 
             foreach (Item todoItem in todoItems)
             {
                 context.Set<Item>().Add(todoItem);
             }
 
+            foreach(User u in users)
+            {
+                context.Set<User>().Add(u);
+            }
+           
             base.Seed(context);
         }
     }

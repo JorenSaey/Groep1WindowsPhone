@@ -13,6 +13,8 @@ namespace TravelListServiceService.DataObjects
         public string Name { get; set; }
         public int AmountNeeded { get; set; }
         public int AmountCollected { get; set; }
+
+        public virtual Categorie Categorie { get; set; }
         //CONSTRUCTOR
         public Item() { }
         public Item(string name, int amountNeeded)

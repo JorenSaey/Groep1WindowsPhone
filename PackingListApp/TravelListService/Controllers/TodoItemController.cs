@@ -23,8 +23,11 @@ namespace TravelListServiceService.Controllers
        // [Queryable("Items")]
         public IQueryable<Item> GetAllTodoItems()
         {
-            return Query();
+            IQueryable<Item> test = Query();
+            return test;
         }
+
+     
 
         // GET tables/TodoItem/48D68C86-6EA6-4C25-AA33-223FC9A27959
         public SingleResult<Item> GetTodoItem(string id)
