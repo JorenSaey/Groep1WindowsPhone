@@ -9,10 +9,12 @@ namespace TravelListServiceService.DataObjects
     public class Categorie : EntityData
     {
         //ATTRIBUTEN
-        //public Guid Id { get; set; }
+        public string Id { get; set; }
         public string Name{ get; set; }
 
-        public virtual Travel Travel { get; set; }
+
+        public string TravelId { get; set; }
+        // public virtual Travel Travel { get; set; }
         public virtual ICollection<Item> Items { get;  set; }
         //CONSTRUCTOR
         public Categorie() { }

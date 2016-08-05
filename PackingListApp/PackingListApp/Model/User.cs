@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,13 +9,18 @@ namespace PackingListApp.Model
 {
     class User
     {
-
+        [JsonProperty("id")]
+        public Guid Id { get; set; }
+        [JsonProperty("email")]
         public string Email { get; set; }
-        public string Id { get; set; }
+        [JsonProperty("firstName")]
         public string FirstName { get; set; }
+        [JsonProperty("lastName")]
         public string LastName { get; set; }
+        [JsonProperty("password")]
         public string Password { get; set; }
-     //   public virtual IList<Travel> Travels { get; set; }
+        [JsonProperty("travels")]
+        public virtual ICollection<Travel> Travels { get; set; }
         //CONSTRUCTOR
         public User() { }
         public User(string email, string firstname, string lastname, string password)
@@ -23,7 +29,7 @@ namespace PackingListApp.Model
             FirstName = firstname;
             LastName = lastname;
             Password = password;
-          //  Travels = new List<Travel>();
+              Travels = new List<Travel>();
         }
     }
 }

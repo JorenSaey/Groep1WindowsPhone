@@ -21,6 +21,7 @@ namespace TravelListServiceService
 
             //For more information on Web API tracing, see http://go.microsoft.com/fwlink/?LinkId=620686 
             config.EnableSystemDiagnosticsTracing();
+            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
 
             new MobileAppConfiguration()
                 .UseDefaultConfiguration()
@@ -52,66 +53,68 @@ namespace TravelListServiceService
 
     public class TravelListServiceInitializer : DropCreateDatabaseAlways<TravelListServiceContext>
     {
-        protected override void Seed(TravelListServiceContext context)
+      
+        public TravelListServiceInitializer()
         {
-
-
-
-            User user1 = new User { Id = Guid.NewGuid().ToString(), Email = "anton.rooseleer@gmail.com", FirstName = "anton", LastName = "rooseleer", Password = "pw" };
-            User user2 = new User { Id = Guid.NewGuid().ToString(), Email = "test@gmail.com", FirstName = "test", LastName = "account", Password = "pw" };
-
-
-
-            Travel travel1 = new Travel { Id = Guid.NewGuid().ToString(), Name = "Belgium", Destination = "Brussels" };
-            Travel travel2 = new Travel { Id = Guid.NewGuid().ToString(), Name = "UK", Destination = "London" };
-
-
-
-
+            Seed(new TravelListServiceContext());
+        }
+ 
+        protected override void Seed(TravelListServiceContext context)
+       {
+           
+           
 
             Categorie categorie1 = new Categorie { Id = Guid.NewGuid().ToString(), Name = "Documenten" };
+            categorie1.Items = new List<Item>{ new Item { Id = Guid.NewGuid().ToString(), Name = "Ticket", AmountCollected = 1, AmountNeeded = 2 }
+        };
+            Categorie categorie2 = new Categorie { Id = Guid.NewGuid().ToString(), Name = "Eten" };
+            categorie1.Items = new List<Item>{ new Item { Id = Guid.NewGuid().ToString(), Name = "Appels", AmountCollected = 1, AmountNeeded = 2 }
+        };
 
-            Categorie categorie2 = new Categorie { Id = Guid.NewGuid().ToString(), Name = "Kleren" };
-
-            Item item1 =
-                new Item { Id = Guid.NewGuid().ToString(), Name = "First item", AmountCollected = 1, AmountNeeded = 2 };
-
-            Item item2 = new Item { Id = Guid.NewGuid().ToString(), Name = "First item", AmountCollected = 1, AmountNeeded = 2 };
-
-            categorie1.Items.Add(item1);
-            categorie2.Items.Add(item2);
-            travel1.Categories.Add(categorie1);
-            travel2.Categories.Add(categorie2);
-            user1.Travels.Add(travel1);
-            user2.Travels.Add(travel2);
-            List<User> users = new List<User>
+         
+            User user1 = new User { Id = Guid.NewGuid().ToString(), Email = "testAccount@gmail.com", FirstName = "test", LastName = "acc", Password = "pw" };
+     
+            Travel travel1 = new Travel
             {
-
+                Id = Guid.NewGuid().ToString(),
+                Name = "Belgium",
+                Destination = "Brussels" 
             };
-            users.Add(user1);
-            users.Add(user2);
-                
-
-
-            List<Item> todoItems = new List<Item>
-            {
-                new Item { Id = Guid.NewGuid().ToString(), Name = "Anton", AmountCollected = 1,AmountNeeded=2 },
-                new Item { Id = Guid.NewGuid().ToString(), Name = "Second item", AmountCollected = 2, AmountNeeded =3 },
-            };
-
-            for (int i = 0; i < 2; i++)
-        
-
-            foreach (Item todoItem in todoItems)
-            {
-                context.Set<Item>().Add(todoItem);
-            }
-
-            foreach(User u in users)
-            {
-                context.Set<User>().Add(u);
-            }
            
+            travel1.Categories = new List<Categorie> { categorie1, categorie2 };
+            user1.Travels = new List<Travel> {travel1 };
+
+
+
+            Categorie categorie3 = new Categorie { Id = Guid.NewGuid().ToString(), Name = "Kleren" };
+            categorie3.Items = new List<Item>{ new Item { Id = Guid.NewGuid().ToString(), Name = "Jas", AmountCollected = 1, AmountNeeded = 2 }
+        };
+            Categorie categorie4 = new Categorie { Id = Guid.NewGuid().ToString(), Name = "Medicatie" };
+            categorie4.Items = new List<Item>{ new Item { Id = Guid.NewGuid().ToString(), Name = "Zonnecreme", AmountCollected = 1, AmountNeeded = 2 }
+        };
+
+        
+            User user2 = new User { Id = Guid.NewGuid().ToString(), Email = "anton@gmail.com", FirstName = "anton", LastName = "rooseleer", Password = "pw" };
+
+            Travel travel2 = new Travel
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = "Brazillie",
+                Destination = "Rio"
+            };
+
+            travel2.Categories = new List<Categorie> { categorie3, categorie4 };
+            user2.Travels = new List<Travel> { travel2 };
+
+
+
+
+           
+            context.Users.Add(user1);
+            context.Users.Add(user2);
+            context.SaveChanges();
+      
+
             base.Seed(context);
         }
     }
