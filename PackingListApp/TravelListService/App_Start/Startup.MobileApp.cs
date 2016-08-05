@@ -51,14 +51,10 @@ namespace TravelListServiceService
         }
     }
 
-    public class TravelListServiceInitializer : DropCreateDatabaseAlways<TravelListServiceContext>
+    public class TravelListServiceInitializer : CreateDatabaseIfNotExists<TravelListServiceContext>
     {
       
-        public TravelListServiceInitializer()
-        {
-            Seed(new TravelListServiceContext());
-        }
- 
+    
         protected override void Seed(TravelListServiceContext context)
        {
            
