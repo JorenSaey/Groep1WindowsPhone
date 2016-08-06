@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PackingListApp.Model;
-using Microsoft.WindowsAzure.MobileServices;
-using System.Net.Http;
+
 using PackingListApp.Controller;
 
 namespace PackingListApp.ViewModels
@@ -25,13 +18,16 @@ namespace PackingListApp.ViewModels
         {
             try
             {
-                User loggedin = await apiController.loginUser(username, password);
+                 await apiController.loginUser(username, password);
             }catch (ArgumentNullException e)
             {
                 // foute login
             }
            if(apiController.loggedInUser != null)
             {
+                //apiController.loggedInUser.Email="updatetest@gmail.com";
+                //apiController.updateUser(apiController.loggedInUser);
+
                 // ga naar homepagina
             }
            

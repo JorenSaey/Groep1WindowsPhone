@@ -215,11 +215,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.MobileApp.cs" />
-    <Compile Include="Controllers\CategorieController.cs" />
     <Compile Include="Controllers\QueryableExpandAttribute.cs" />
-    <Compile Include="Controllers\TodoItemController.cs" />
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DataObjects\Categorie.cs" />
     <Compile Include="DataObjects\Item.cs" />
     <Compile Include="DataObjects\Travel.cs" />

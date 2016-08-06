@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PackingListApp.Model
 {
- 
+
     class Item
     {
         [JsonProperty("id")]
@@ -20,9 +20,7 @@ namespace PackingListApp.Model
         public int AmountCollected { get; set; }
         [JsonProperty("categorieId")]
         public string CategorieId { get; set; }
-
-        //[JsonProperty("categorie")]
-        //public virtual Categorie Categorie { get; set; }
+        
         //CONSTRUCTOR
         public Item() { }
         public Item(string name, int amountNeeded)

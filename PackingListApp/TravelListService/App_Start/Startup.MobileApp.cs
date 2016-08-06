@@ -7,7 +7,6 @@ using Microsoft.Azure.Mobile.Server;
 using Microsoft.Azure.Mobile.Server.Authentication;
 using Microsoft.Azure.Mobile.Server.Config;
 using TravelListServiceService.DataObjects;
-using TravelListServiceService.Models;
 using Owin;
 using TravelListServiceService.Models.DAL;
 
@@ -64,7 +63,7 @@ namespace TravelListServiceService
             categorie1.Items = new List<Item>{ new Item { Id = Guid.NewGuid().ToString(), Name = "Ticket", AmountCollected = 1, AmountNeeded = 2 }
         };
             Categorie categorie2 = new Categorie { Id = Guid.NewGuid().ToString(), Name = "Eten" };
-            categorie1.Items = new List<Item>{ new Item { Id = Guid.NewGuid().ToString(), Name = "Appels", AmountCollected = 1, AmountNeeded = 2 }
+            categorie2.Items = new List<Item>{ new Item { Id = Guid.NewGuid().ToString(), Name = "Appels", AmountCollected = 1, AmountNeeded = 2 }
         };
 
 

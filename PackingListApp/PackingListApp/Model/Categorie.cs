@@ -1,9 +1,6 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace PackingListApp.Model
 {
@@ -13,8 +10,6 @@ namespace PackingListApp.Model
         public string Id { get; set; }
         [JsonProperty("name")]
         public string Name { get; set; }
-        //[JsonProperty("travel")]
-        //public virtual Travel Travel { get; set; }
         [JsonProperty("items")]
         public virtual ICollection<Item> Items { get; set; }
         [JsonProperty("travelId")]

@@ -1,12 +1,9 @@
 ﻿using Microsoft.Azure.Mobile.Server;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http;
 using System.Web.Http.Controllers;
-using System.Web.Mvc;
+using System.Web.Http.OData;
 using TravelListServiceService.DataObjects;
 using TravelListServiceService.Models.DAL;
 
@@ -27,19 +24,7 @@ namespace TravelListServiceService.Controllers
         {
 
             IQueryable<User> test = Query();
-            //test//
-            //User temp = new User("Test", "travel", "acount", "hier");
-            //temp.Id = Guid.NewGuid().ToString();
-            //Travel travel1 = new Travel
-            //{
-            //    Id = "Customtest",
-            //    Name = "Belgium",
-            //    Destination = "Brussels"
-            //};
-            //travel1.UserId = temp.Id;
-            //temp.Travels = new List<Travel> { travel1 };
-            //await InsertAsync(temp);
-            //test
+       
 
             return Query();
         }
@@ -54,13 +39,17 @@ namespace TravelListServiceService.Controllers
         [System.Web.Http.HttpPost]
         public async Task<IHttpActionResult> PostTodoItem([FromBody]User user)
         {
-   
+    
+
             User current = await InsertAsync(user);
             return CreatedAtRoute("Tables", new { id = current.Id }, current);
         }
 
+        public Task<User> PatchUser(string id, Delta<User> patch)
+        {
+            return UpdateAsync(id, patch);
+        }
 
-      
         // DELETE tables/TodoItem/48D68C86-6EA6-4C25-AA33-223FC9A27959
         public Task DeleteUserItem(string id)
         {

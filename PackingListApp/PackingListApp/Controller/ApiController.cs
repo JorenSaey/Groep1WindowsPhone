@@ -1,6 +1,5 @@
 ﻿using Microsoft.WindowsAzure.MobileServices;
 using PackingListApp.Model;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -18,15 +17,18 @@ namespace PackingListApp.Controller
             client = App.MobileService;
             userTable = client.GetTable<User>();
 
-
-
         }
 
-        public async void insertUser(User user)
+        public async void updateUser(User u)
         {
 
-    
-     
+            u.Travels = null;
+            await userTable.UpdateAsync(u);
+
+        }
+        public async void insertUser(User user)
+        {
+           
             await userTable.InsertAsync(user);
             
         }

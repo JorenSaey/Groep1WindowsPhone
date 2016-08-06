@@ -103,7 +103,6 @@
     </Compile>
     <Compile Include="Model\Categorie.cs" />
     <Compile Include="Model\Item.cs" />
-    <Compile Include="Model\todoItem.cs" />
     <Compile Include="Model\Travel.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

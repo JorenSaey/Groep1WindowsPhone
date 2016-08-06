@@ -1,9 +1,6 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace PackingListApp.Model
 {
@@ -19,8 +16,6 @@ namespace PackingListApp.Model
         public string UserId { get; set; }
         [JsonProperty("categories")]
         public virtual ICollection<Categorie> Categories { get; set; }
-        //[JsonProperty("user")]
-       // public virtual User User { get; set; }
 
         //CONSTRUCTOR
         public Travel() { }
