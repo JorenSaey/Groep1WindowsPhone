@@ -33,11 +33,15 @@ namespace PackingListApp.Controller
             await userTable.DeleteAsync(user);
         }
 
-        public async void loginUser(string email,string password)
+        public async 
+        Task
+loginUser(string email,string password)
         {
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             parameters.Add("email", email);
+            parameters.Add("password", password);
             var user = await userTable.WithParameters(parameters).ToCollectionAsync();
+            String test = "";
 
         }
     }

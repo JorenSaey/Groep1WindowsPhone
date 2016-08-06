@@ -30,11 +30,13 @@ namespace PackingListApp
 
         public void Valideer_Login(object sender, RoutedEventArgs e)
         {
-            
-        //    txtUsername.Text = mainViewModel.todo.Name;
-        
-           // username = mainViewModel.todo.Name;
+
+            //    txtUsername.Text = mainViewModel.todo.Name;
+
+            // username = mainViewModel.todo.Name;
+            username = txtUsername.Text;
             password = PwBoxPasswoord.Password;
+            
             //valideer
 
 

@@ -43,13 +43,11 @@ namespace TravelListServiceService.Controllers
 
             return Query();
         }
-        [QueryableExpand("Travels")]
-        public User GetUsers(string id)
+       // [QueryableExpand("Travels")]
+        public User GetUsers(string email,string password)
         {
-            //IQueryable<User> test = Query();
-            // User temp = Query().Where(c => c.Id == id).FirstOrDefault();
-            // return Query().Where(c => c.Id == id);
-            User temp = Query().Where(c => c.Id == id).FirstOrDefault();
+           
+            User temp = Query().Where(c => c.Email == email && c.Password == password ).FirstOrDefault();
             return temp;
         }
     
@@ -62,15 +60,7 @@ namespace TravelListServiceService.Controllers
         }
 
 
-        //public async Task<IHttpActionResult> PostTodoItem(string lastName, string firstName, string email, string password)
-        //{
-
-        //    User temp = new User(email, firstName, lastName, password);
-        //    User current = await InsertAsync(temp);
-            
-        //    return CreatedAtRoute("Tables", new { id = Guid.NewGuid().ToString() }, current);
-        //}
-
+      
         // DELETE tables/TodoItem/48D68C86-6EA6-4C25-AA33-223FC9A27959
         public Task DeleteUserItem(string id)
         {
