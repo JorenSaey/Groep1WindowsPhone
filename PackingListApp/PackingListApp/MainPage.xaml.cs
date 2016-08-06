@@ -15,29 +15,24 @@ namespace PackingListApp
     public partial class MainPage : PhoneApplicationPage
     {
 
-       private String username;
-        private String password;
+       private string username;
+        private string password;
         private MainViewModel mainViewModel;
 
-        // Constructor
+
         public MainPage()
         {
             InitializeComponent();
             mainViewModel = new MainViewModel();
 
-            mainViewModel.getAzureData();
-            mainViewModel.getUserData();
-
-            // Sample code to localize the ApplicationBar
-            //BuildLocalizedApplicationBar();
+       
         }
 
         public void Valideer_Login(object sender, RoutedEventArgs e)
         {
-
-            mainViewModel.loadData();
-            txtUsername.Text = mainViewModel.todo.Name;
-            User user = mainViewModel.single;
+            
+        //    txtUsername.Text = mainViewModel.todo.Name;
+        
            // username = mainViewModel.todo.Name;
             password = PwBoxPasswoord.Password;
             //valideer

@@ -10,13 +10,15 @@ namespace PackingListApp.Model
     class Categorie
     {
         [JsonProperty("id")]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         [JsonProperty("name")]
         public string Name { get; set; }
-        [JsonProperty("travel")]
-        public virtual Travel Travel { get; set; }
-        [JsonProperty("item")]
+        //[JsonProperty("travel")]
+        //public virtual Travel Travel { get; set; }
+        [JsonProperty("items")]
         public virtual ICollection<Item> Items { get; set; }
+        [JsonProperty("travelId")]
+        public string TravelId { get; set; }
         //CONSTRUCTOR
         public Categorie() { }
         public Categorie(string name)
@@ -24,5 +26,7 @@ namespace PackingListApp.Model
             Name = name;
              Items = new List<Item>();
         }
+
+ 
     }
 }

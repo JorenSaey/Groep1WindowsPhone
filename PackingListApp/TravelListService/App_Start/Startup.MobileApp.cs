@@ -57,8 +57,8 @@ namespace TravelListServiceService
     
         protected override void Seed(TravelListServiceContext context)
        {
-           
-           
+
+
 
             Categorie categorie1 = new Categorie { Id = Guid.NewGuid().ToString(), Name = "Documenten" };
             categorie1.Items = new List<Item>{ new Item { Id = Guid.NewGuid().ToString(), Name = "Ticket", AmountCollected = 1, AmountNeeded = 2 }
@@ -67,18 +67,18 @@ namespace TravelListServiceService
             categorie1.Items = new List<Item>{ new Item { Id = Guid.NewGuid().ToString(), Name = "Appels", AmountCollected = 1, AmountNeeded = 2 }
         };
 
-         
+
             User user1 = new User { Id = Guid.NewGuid().ToString(), Email = "testAccount@gmail.com", FirstName = "test", LastName = "acc", Password = "pw" };
-     
+
             Travel travel1 = new Travel
             {
                 Id = Guid.NewGuid().ToString(),
                 Name = "Belgium",
-                Destination = "Brussels" 
+                Destination = "Brussels"
             };
-           
+
             travel1.Categories = new List<Categorie> { categorie1, categorie2 };
-            user1.Travels = new List<Travel> {travel1 };
+            user1.Travels = new List<Travel> { travel1 };
 
 
 
@@ -89,7 +89,7 @@ namespace TravelListServiceService
             categorie4.Items = new List<Item>{ new Item { Id = Guid.NewGuid().ToString(), Name = "Zonnecreme", AmountCollected = 1, AmountNeeded = 2 }
         };
 
-        
+
             User user2 = new User { Id = Guid.NewGuid().ToString(), Email = "anton@gmail.com", FirstName = "anton", LastName = "rooseleer", Password = "pw" };
 
             Travel travel2 = new Travel
@@ -102,10 +102,10 @@ namespace TravelListServiceService
             travel2.Categories = new List<Categorie> { categorie3, categorie4 };
             user2.Travels = new List<Travel> { travel2 };
 
+         
 
 
 
-           
             context.Users.Add(user1);
             context.Users.Add(user2);
             context.SaveChanges();

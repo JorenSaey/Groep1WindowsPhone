@@ -1,4 +1,5 @@
 ﻿using Microsoft.Azure.Mobile.Server;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +9,18 @@ namespace TravelListServiceService.DataObjects
 {
     public class User : EntityData
     {
-        //ATTRIBUTEN
-        //Geërfd van EntityData
+       
+        [JsonProperty("id")]
         public string Id { get; set; }
+        [JsonProperty("email")]
         public string Email { get;  set; }
+        [JsonProperty("firstName")]
         public string FirstName { get;  set; }
+        [JsonProperty("lastName")]
         public string LastName { get;  set; }
+        [JsonProperty("password")]
         public string Password { get; set; }
+        [JsonProperty("travels")]
         public virtual ICollection<Travel> Travels { get; set; }
         //CONSTRUCTOR
         public User() { }

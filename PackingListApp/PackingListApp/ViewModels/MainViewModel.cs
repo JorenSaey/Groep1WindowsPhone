@@ -5,44 +5,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PackingListApp.Model;
+using Microsoft.WindowsAzure.MobileServices;
+using System.Net.Http;
+using PackingListApp.Controller;
 
 namespace PackingListApp.ViewModels
 {
     class MainViewModel
     {
-        public todoItem todo = null;
-        IEnumerable<User> user;
-       public  User single = null;
+        ApiController apiController;
 
-        public static ObservableCollection<todoItem> ItemCollection { set; get; }
-        IEnumerable<todoItem> test;
 
         public MainViewModel()
         {
-            if (ItemCollection == null)
-                ItemCollection = new ObservableCollection<todoItem>();
-
-            getAzureData();
-            getUserData();
-
+            apiController = new ApiController();
         }
 
-        public void loadData()
+        public async void valideer(string username,string password)
         {
+            await apiController.loginUser(username, password);
+            String test = "test";
         }
 
-		public async void getAzureData()
-        {
-			test =await App.MobileService.GetTable<todoItem>().ToEnumerableAsync();
-
-            todo = test.FirstOrDefault();
-            
-        }
-        public async void getUserData()
-        {
-            user = await App.MobileService.GetTable<User>().ToEnumerableAsync();
-
-            single = user.FirstOrDefault();
-        }
     }
 }
