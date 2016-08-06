@@ -34,9 +34,9 @@ namespace PackingListApp
             //    txtUsername.Text = mainViewModel.todo.Name;
 
             // username = mainViewModel.todo.Name;
-            username = txtUsername.Text;
+            username = TxtboxUsername.Text;
             password = PwBoxPasswoord.Password;
-            
+            mainViewModel.valideer(username, password);
             //valideer
 
 

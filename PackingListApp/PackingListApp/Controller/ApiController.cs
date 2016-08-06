@@ -2,6 +2,7 @@
 using PackingListApp.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PackingListApp.Controller
 {
@@ -10,6 +11,7 @@ namespace PackingListApp.Controller
         
        private IMobileServiceTable<User> userTable;
         private IMobileServiceClient client;
+        public User loggedInUser;
 
         public ApiController()
         {
@@ -33,15 +35,16 @@ namespace PackingListApp.Controller
             await userTable.DeleteAsync(user);
         }
 
-        public async 
-        Task
-loginUser(string email,string password)
+        public async System.Threading.Tasks.Task<User> loginUser(string email, string password)
         {
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             parameters.Add("email", email);
             parameters.Add("password", password);
-            var user = await userTable.WithParameters(parameters).ToCollectionAsync();
-            String test = "";
+           IEnumerable<User> user = await userTable.WithParameters(parameters).ToEnumerableAsync();
+            loggedInUser = user.FirstOrDefault();
+            return loggedInUser ;
+
+
 
         }
     }

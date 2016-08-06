@@ -23,8 +23,19 @@ namespace PackingListApp.ViewModels
 
         public async void valideer(string username,string password)
         {
-            await apiController.loginUser(username, password);
-            String test = "test";
+            try
+            {
+                User loggedin = await apiController.loginUser(username, password);
+            }catch (ArgumentNullException e)
+            {
+                // foute login
+            }
+           if(apiController.loggedInUser != null)
+            {
+                // ga naar homepagina
+            }
+           
+         
         }
 
     }
