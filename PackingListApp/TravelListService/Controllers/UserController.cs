@@ -23,8 +23,7 @@ namespace TravelListServiceService.Controllers
         public async Task<IQueryable<User>>GetAllUsers()
         {
 
-            IQueryable<User> test = Query();
-       
+ 
 
             return Query();
         }

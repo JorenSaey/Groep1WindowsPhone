@@ -24,6 +24,7 @@ namespace PackingListApp.Controller
 
             u.Travels = null;
             await userTable.UpdateAsync(u);
+            await userTable.RefreshAsync(u);
 
         }
         public async void insertUser(User user)

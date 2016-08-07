@@ -1,6 +1,7 @@
 ﻿using System;
 
 using PackingListApp.Controller;
+using PackingListApp.Model;
 
 namespace PackingListApp.ViewModels
 {
@@ -25,9 +26,10 @@ namespace PackingListApp.ViewModels
             }
            if(apiController.loggedInUser != null)
             {
-                //apiController.loggedInUser.Email="updatetest@gmail.com";
-                //apiController.updateUser(apiController.loggedInUser);
 
+                User t = apiController.loggedInUser;
+                t.Email = "anton.rooseleer@gmail.com";
+                apiController.updateUser(t);
                 // ga naar homepagina
             }
            
