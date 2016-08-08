@@ -28,8 +28,16 @@ namespace PackingListApp.ViewModels
             {
 
                 User t = apiController.loggedInUser;
-                t.Email = "anton.rooseleer@gmail.com";
+                Travel test = new Travel("wtf", "gelukt?");
+                test.UserId = t.Id;
+                test.Id = Guid.NewGuid().ToString();
+              foreach(Travel tr in t.Travels)
+                {
+                    tr.Name = "Changed";
+                }
+                //  t.Travels.Add(test);
                 apiController.updateUser(t);
+
                 // ga naar homepagina
             }
            
