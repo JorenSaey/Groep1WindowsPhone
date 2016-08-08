@@ -1,7 +1,6 @@
 ﻿
 using System.Windows;
 using Microsoft.Phone.Controls;
-using PackingListApp.ViewModels;
 using System;
 
 namespace PackingListApp
@@ -14,7 +13,10 @@ namespace PackingListApp
         {
             InitializeComponent();
         }
-        
-  
+
+        private void MeldAan(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -35,12 +35,12 @@
                 <BitmapImage DecodePixelWidth="200"  UriSource="http://findicons.com/files/icons/1334/take_a_hike/128/backpack.png" />
             </Image.Source>
         </Image>
-        <TextBlock Grid.Row="2" Grid.Column="0" x:Name="txtUsername" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Gebruikersnaam" VerticalAlignment="Top" Height="38" FontSize="24"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Gebruikersnaam" VerticalAlignment="Top" Height="38" FontSize="24"/>
         <TextBox Grid.Row="3" Grid.Column="0" x:Name="TxtboxUsername" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
-        <TextBlock Grid.Row="4" Grid.Column="0" x:Name="TxtPassword" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Wachtwoord" VerticalAlignment="Top" Height="38" FontSize="24"/>
+        <TextBlock Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Wachtwoord" VerticalAlignment="Top" Height="38" FontSize="24"/>
         <PasswordBox Grid.Row="5" Grid.Column="0" x:Name="PwBoxPassword" HorizontalAlignment="Stretch" VerticalAlignment="Top" />
         <TextBlock Grid.Row="6"  Grid.Column="0" Text="" Foreground="Red" FontSize="18"/>
-        <Button Grid.Row="7" Grid.Column="0" x:Name="btnLogin" Content="Meld aan" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Valideer_Login" Margin="0,50,0,0"/>
+        <Button Grid.Row="7" Grid.Column="0" x:Name="btnLogin" Click="MeldAan" Content="Meld aan" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0"/>
         <HyperlinkButton Grid.Row="8" Grid.Column="0" Content="Heeft u nog geen account?" NavigateUri="/Views/RegisterPage.xaml"/>
     </Grid>
 </phone:PhoneApplicationPage>
