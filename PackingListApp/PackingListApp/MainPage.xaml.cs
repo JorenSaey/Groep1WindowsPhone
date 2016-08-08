@@ -24,7 +24,7 @@ namespace PackingListApp
         public void Valideer_Login(object sender, RoutedEventArgs e)
         {      
             username = TxtboxUsername.Text;
-            password = PwBoxPasswoord.Password;
+            password = PwBoxPassword.Password;
             mainViewModel.valideer(username, password);
 
         }
