@@ -31,8 +31,8 @@ namespace TravelListServiceService.Models.DAL
             modelBuilder.Conventions.Add(
                 new AttributeToColumnAnnotationConvention<TableColumnAttribute, string>(
                     "ServiceTableColumn", (property, attributes) => attributes.Single().ColumnType.ToString()));
-            //modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-          //  modelBuilder.Configurations.AddFromAssembly(Assembly.GetExecutingAssembly());
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Configurations.AddFromAssembly(Assembly.GetExecutingAssembly());
         }
     }
 
