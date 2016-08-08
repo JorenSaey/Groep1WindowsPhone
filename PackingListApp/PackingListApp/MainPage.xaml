@@ -14,13 +14,31 @@
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid>
-        <Button x:Name="btnLogin" Content="Login" HorizontalAlignment="Left" Margin="77,554,0,0" VerticalAlignment="Top" Click="Valideer_Login" Width="165" />
-        <TextBlock x:Name="txtUsername" HorizontalAlignment="Left" Margin="77,204,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" Height="38" Width="128" FontSize="24"/>
-        <TextBlock x:Name="TxtPassword" HorizontalAlignment="Left" Margin="77,371,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Height="38" Width="128" FontSize="24"/>
-        <TextBox x:Name="TxtboxUsername" HorizontalAlignment="Left" Margin="77,247,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="348"/>
-        <TextBlock x:Name="TxtLogin" HorizontalAlignment="Left" Margin="34,53,0,0" TextWrapping="Wrap" Text="Log in" VerticalAlignment="Top" Height="53" Width="151" FontSize="32"/>
-        <PasswordBox x:Name="PwBoxPasswoord" HorizontalAlignment="Left" Margin="77,414,0,0" VerticalAlignment="Top" Width="348"/>
-
+    <Grid Margin="10,10,10,10" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" x:Name="TxtLogin" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Aanmelden" VerticalAlignment="Top" Padding="0,10" FontSize="32"/>
+        <Image Grid.Row="1" Grid.Column="0" Width="200" Height="200" Margin="0,30,0,0">
+            <Image.Source>
+                <BitmapImage DecodePixelWidth="200"  UriSource="http://findicons.com/files/icons/1334/take_a_hike/128/backpack.png" />
+            </Image.Source>
+        </Image>
+        <TextBlock Grid.Row="2" Grid.Column="0" x:Name="txtUsername" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" Height="38" FontSize="24"/>
+        <TextBox Grid.Row="3" Grid.Column="0" x:Name="TxtboxUsername" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <TextBlock Grid.Row="4" Grid.Column="0" x:Name="TxtPassword" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Height="38" FontSize="24"/>
+        <PasswordBox Grid.Row="5" Grid.Column="0" x:Name="PwBoxPasswoord" HorizontalAlignment="Stretch" VerticalAlignment="Top" />
+        <Button Grid.Row="6" Grid.Column="0" x:Name="btnLogin" Content="Meld aan" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Valideer_Login" Margin="0,50,0,0"/>
+        <HyperlinkButton Grid.Row="7" Grid.Column="0" Content="Heeft u nog geen account?" />
     </Grid>
 </phone:PhoneApplicationPage>
