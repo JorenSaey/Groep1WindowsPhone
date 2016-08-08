@@ -114,6 +114,9 @@
     <Compile Include="Views\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\TravelPage.xaml.cs">
+      <DependentUpon>TravelPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -125,6 +128,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\RegisterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TravelPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

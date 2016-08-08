@@ -2,6 +2,7 @@
 using System.Windows;
 using Microsoft.Phone.Controls;
 using PackingListApp.ViewModels;
+using System;
 
 namespace PackingListApp
 {
@@ -22,11 +23,11 @@ namespace PackingListApp
         }
 
         public void Valideer_Login(object sender, RoutedEventArgs e)
-        {      
-            username = TxtboxUsername.Text;
-            password = PwBoxPassword.Password;
-            mainViewModel.valideer(username, password);
-
+        {
+            //username = TxtboxUsername.Text;
+            //password = PwBoxPassword.Password;
+            //mainViewModel.valideer(username, password);
+            NavigationService.Navigate(new Uri("/Views/TravelPage.xaml", UriKind.Relative));
         }
   
     }
