@@ -52,8 +52,7 @@ namespace TravelListServiceService
 
     public class TravelListServiceInitializer : CreateDatabaseIfNotExists<TravelListServiceContext>
     {
-
-    
+      
     
         protected override void Seed(TravelListServiceContext context)
        {
