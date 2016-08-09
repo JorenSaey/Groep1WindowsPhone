@@ -13,9 +13,9 @@ namespace PackingListApp.Models
         public string Id { get; set; }
         [JsonProperty(PropertyName="email")]
         public string Email { get; private set; }
-        [JsonProperty(PropertyName = "firstname")]
+        [JsonProperty(PropertyName = "firstName")]
         public string FirstName { get; private set; }
-        [JsonProperty(PropertyName = "lastname")]
+        [JsonProperty(PropertyName = "lastName")]
         public string LastName { get; private set; }
         [JsonProperty(PropertyName = "password")]
         public string Password { get; set; }

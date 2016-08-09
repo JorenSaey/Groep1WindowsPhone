@@ -29,6 +29,7 @@ namespace PackingListApp
         {
             //test
             await ShowUser("joren.saey@gmail.com");
+            NavigationService.Navigate(new Uri("/Views/TravelPage.xaml", UriKind.Relative));
         }
     }
 }
