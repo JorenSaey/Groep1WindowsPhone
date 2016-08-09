@@ -5,6 +5,7 @@ using System;
 using Microsoft.WindowsAzure.MobileServices;
 using PackingListApp.Models;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace PackingListApp
 {
@@ -14,22 +15,25 @@ namespace PackingListApp
         private IMobileServiceTable<User> userTable =
             App.MobileService.GetTable<User>();
 
+ 
+
         public MainPage()
         {
-            InitializeComponent();
+            InitializeComponent();           
         }
 
         //test
         private async Task ShowUser(string email)
         {
             User user = await userTable.LookupAsync(email);
+            TxtboxUsername.Text = user.FirstName;
             Console.WriteLine(user.FirstName);
         }
         private async void MeldAan(object sender, RoutedEventArgs e)
         {
             //test
             await ShowUser("joren.saey@gmail.com");
-            NavigationService.Navigate(new Uri("/Views/TravelPage.xaml", UriKind.Relative));
+            //NavigationService.Navigate(new Uri("/Views/TravelPage.xaml", UriKind.Relative));
         }
     }
 }
