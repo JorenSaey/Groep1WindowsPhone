@@ -1,14 +1,15 @@
-﻿using System;
+﻿using Microsoft.WindowsAzure.Mobile.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 namespace PackingListService.DataObjects
 {
-    public class Travel
+    public class Travel : EntityData
     {
         //ATTRIBUTEN
-        public Guid Id { get; set; }
+        //public Guid Id { get; set; }
         public string Name { get; set; }
         public string Destination { get; set; }
         public virtual IList<Categorie> Categories {get; private set;}

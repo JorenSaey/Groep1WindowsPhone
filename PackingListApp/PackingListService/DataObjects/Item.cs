@@ -1,14 +1,15 @@
-﻿using System;
+﻿using Microsoft.WindowsAzure.Mobile.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 namespace PackingListService.DataObjects
 {
-    public class Item
+    public class Item : EntityData
     {
         //ATTRIBUTEN
-        public Guid Id { get; set; }
+        //public Guid Id { get; set; }
         public string Name { get; set; }
         public int AmountNeeded { get; set; }
         public int AmountCollected { get; set; }

@@ -1,4 +1,6 @@
-﻿using System.Web.Http;
+﻿using PackingListService.Models;
+using System.Linq;
+using System.Web.Http;
 using System.Web.Routing;
 
 namespace PackingListService
@@ -8,6 +10,8 @@ namespace PackingListService
         protected void Application_Start()
         {
             WebApiConfig.Register();
+            MobileServiceContext mbc = new MobileServiceContext();
+            mbc.Users.ToList();
         }
     }
 }

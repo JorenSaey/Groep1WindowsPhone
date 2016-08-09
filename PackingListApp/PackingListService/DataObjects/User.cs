@@ -1,14 +1,15 @@
-﻿using System;
+﻿using Microsoft.WindowsAzure.Mobile.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 namespace PackingListService.DataObjects
 {
-    public class User
+    public class User : EntityData
     {
         //ATTRIBUTEN
-        public Guid Id { get; set; }
+        //public Guid Id { get; set; } bestaat al
         public string Email { get; private set; }
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
@@ -16,8 +17,9 @@ namespace PackingListService.DataObjects
         public virtual IList<Travel> Travels { get; private set; }
         //CONSTRUCTOR
         public User() { }
-        public User(string email, string firstname, string lastname,string password)
+        public User(string id,string email, string firstname, string lastname,string password)
         {
+            Id = id;
             Email = email;
             FirstName = firstname;
             LastName = lastname;
