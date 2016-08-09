@@ -33,7 +33,7 @@ namespace PackingListService
         protected override void Seed(MobileServiceContext context)
         {
             try {
-                context.Users.Add(new User("1","joren.saey@gmail.com", "joren", "saey", "dc00c903852bb19eb250aeba05e534a6d211629d77d055033806b783bae09937"));
+                context.Users.Add(new User("joren.saey@gmail.com", "joren", "saey", "dc00c903852bb19eb250aeba05e534a6d211629d77d055033806b783bae09937"));
                 context.SaveChanges();
             }
             catch (DbEntityValidationException dbEx)

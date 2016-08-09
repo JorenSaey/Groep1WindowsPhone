@@ -1,25 +1,31 @@
-﻿using Microsoft.WindowsAzure.Mobile.Service;
-using System;
+﻿
+
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
-namespace PackingListService.DataObjects
+
+namespace PackingListApp.Models
 {
-    public class User : EntityData
+    public class User 
     {
         //ATTRIBUTEN
-        //public Guid Id { get; set; } bestaat al
+        public string Id { get; set; }
+        [JsonProperty(PropertyName="email")]
         public string Email { get; private set; }
+        [JsonProperty(PropertyName = "firstname")]
         public string FirstName { get; private set; }
+        [JsonProperty(PropertyName = "lastname")]
         public string LastName { get; private set; }
+        [JsonProperty(PropertyName = "password")]
         public string Password { get; set; }
+        [JsonProperty(PropertyName = "travels")]
         public virtual IList<Travel> Travels { get; private set; }
         //CONSTRUCTOR
         public User() { }
-        public User(string email, string firstname, string lastname,string password)
+        public User(string id,string email, string firstname, string lastname,string password)
         {
-            Id = email;
+            Id = id;
             Email = email;
             FirstName = firstname;
             LastName = lastname;
