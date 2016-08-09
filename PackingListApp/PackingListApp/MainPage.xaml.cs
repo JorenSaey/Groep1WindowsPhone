@@ -10,30 +10,27 @@ using System.Windows.Controls;
 namespace PackingListApp
 {
     public partial class MainPage : PhoneApplicationPage
-    {
-        private MobileServiceCollection<User, User> users;
-        private IMobileServiceTable<User> userTable =
-            App.MobileService.GetTable<User>();
-
- 
+    {        
 
         public MainPage()
         {
             InitializeComponent();           
         }
-
-        //test
-        private async Task ShowUser(string email)
-        {
-            User user = await userTable.LookupAsync(email);
-            TxtboxUsername.Text = user.FirstName;
-            Console.WriteLine(user.FirstName);
-        }
+        
         private async void MeldAan(object sender, RoutedEventArgs e)
         {
-            //test
-            await ShowUser("joren.saey@gmail.com");
-            //NavigationService.Navigate(new Uri("/Views/TravelPage.xaml", UriKind.Relative));
+            try {
+                bool valid = await AccountValidator.ValidateSignIn(TxtEmail.Text, PswPassword.Password);
+                if (valid)
+                    NavigationService.Navigate(new Uri("/Views/TravelPage.xaml", UriKind.Relative));
+                else
+                    TxtError.Text = "Aanmeldgegevens incorrect";
+            }
+            catch(MobileServiceInvalidOperationException ex)
+            {
+                TxtError.Text = "Kan geen verbinding maken met de service";
+            }           
+            
         }
     }
 }
