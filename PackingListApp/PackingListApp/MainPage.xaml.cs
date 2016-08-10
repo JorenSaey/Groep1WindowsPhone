@@ -20,16 +20,24 @@ namespace PackingListApp
         private async void MeldAan(object sender, RoutedEventArgs e)
         {
             try {
+                BtnLogin.IsEnabled = false;
                 bool valid = await AccountValidator.ValidateSignIn(TxtEmail.Text, PswPassword.Password);
                 if (valid)
+                {
+                    TxtError.Text = "";
                     NavigationService.Navigate(new Uri("/Views/TravelPage.xaml", UriKind.Relative));
+                }
                 else
                     TxtError.Text = "Aanmeldgegevens incorrect";
             }
             catch(MobileServiceInvalidOperationException ex)
             {
                 TxtError.Text = "Kan geen verbinding maken met de service";
-            }           
+            }     
+            finally
+            {
+                BtnLogin.IsEnabled = true;
+            }      
             
         }
     }

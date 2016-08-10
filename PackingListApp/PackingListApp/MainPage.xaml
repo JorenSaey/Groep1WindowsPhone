@@ -39,7 +39,7 @@
         <TextBox Grid.Row="3" Grid.Column="0" x:Name="TxtEmail" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
         <TextBlock Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Wachtwoord" VerticalAlignment="Top" Height="38" FontSize="24"/>
         <PasswordBox Grid.Row="5" Grid.Column="0" x:Name="PswPassword" HorizontalAlignment="Stretch" VerticalAlignment="Top" />
-        <TextBlock Grid.Row="6"  Grid.Column="0" x:Name="TxtError" Text="" Foreground="Red" FontSize="18"/>
+        <TextBlock Grid.Row="6"  Grid.Column="0" x:Name="TxtError" Text="" Foreground="Red" FontSize="18" Margin="17,0"/>
         <Button Grid.Row="7" Grid.Column="0" x:Name="BtnLogin" Click="MeldAan" Content="Meld aan" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0"/>
         <HyperlinkButton Grid.Row="8" Grid.Column="0" Content="Heeft u nog geen account?" NavigateUri="/Views/RegisterPage.xaml"/>
     </Grid>
