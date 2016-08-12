@@ -14,15 +14,16 @@ namespace PackingListService.DataObjects
         public virtual IList<Item> Items { get; private set; }
         //CONSTRUCTOR
         public Categorie() { }
-        public Categorie(string name)
+        public Categorie(string id,string name)
         {
+            Id = id;
             Name = name;
             Items = new List<Item>();
         }
         //ANDERE METHODES
         public void AddItem(string name, int amountNeeded)
         {
-            Item item = new Item(name, amountNeeded);
+            Item item = new Item(Id+name,name, amountNeeded);
             Items.Add(item);
         }
         public void RemoveItem(string name)

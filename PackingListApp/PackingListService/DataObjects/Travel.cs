@@ -15,8 +15,9 @@ namespace PackingListService.DataObjects
         public virtual IList<Categorie> Categories {get; private set;}
         //CONSTRUCTOR
         public Travel() { }
-        public Travel(string name, string destination)
+        public Travel(string id, string name, string destination)
         {
+            Id = id;
             Name = name;
             Destination = destination;
             Categories = new List<Categorie>();
@@ -24,7 +25,7 @@ namespace PackingListService.DataObjects
         //ANDERE METHODES
         public void AddCategorie(string name)
         {
-            Categorie categorie = new Categorie(name);
+            Categorie categorie = new Categorie(Id+name,name);
             Categories.Add(categorie);
         }
         public void RemoveCategorie(string name)

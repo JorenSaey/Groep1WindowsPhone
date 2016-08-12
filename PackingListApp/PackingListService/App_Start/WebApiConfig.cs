@@ -33,7 +33,12 @@ namespace PackingListService
         protected override void Seed(MobileServiceContext context)
         {
             try {
-                context.Users.Add(new User("joren.saey@gmail.com", "joren", "saey", "dc00c903852bb19eb250aeba05e534a6d211629d77d055033806b783bae09937"));
+                User joren = new User("joren.saey@gmail.com", "joren", "saey", "dc00c903852bb19eb250aeba05e534a6d211629d77d055033806b783bae09937");
+                joren.AddTravel("Survivalweekend", "Ardennen");
+                joren.AddTravel("Businesstrip Marseille", "Marseille, Frakrijk");
+                joren.Travels[0].AddCategorie("Broeken");
+                joren.Travels[0].Categories[0].AddItem("Zwarte jeans",3);
+                context.Users.Add(joren);
                 context.SaveChanges();
             }
             catch (DbEntityValidationException dbEx)
