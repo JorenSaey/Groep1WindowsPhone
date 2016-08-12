@@ -21,11 +21,12 @@ namespace PackingListApp
         {
             try {
                 BtnLogin.IsEnabled = false;
-                bool valid = await AccountValidator.ValidateSignIn(TxtEmail.Text, PswPassword.Password);
-                if (valid)
+                //returnt null als de aameldgegevens incorrect zijn
+                User user = await AccountValidator.ValidateSignIn(TxtEmail.Text, PswPassword.Password);
+                if (user != null)
                 {
                     TxtError.Text = "";
-                    NavigationService.Navigate(new Uri("/Views/TravelPage.xaml", UriKind.Relative));
+                    NavigationService.Navigate(new Uri("/Views/TravelPage.xaml?email="+user.Email, UriKind.Relative));
                 }
                 else
                     TxtError.Text = "Aanmeldgegevens incorrect";

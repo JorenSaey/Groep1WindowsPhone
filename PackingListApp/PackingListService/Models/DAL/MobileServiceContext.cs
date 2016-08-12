@@ -43,7 +43,8 @@ namespace PackingListService.Models
                 new AttributeToColumnAnnotationConvention<TableColumnAttribute, string>(
                     "ServiceTableColumn", (property, attributes) => attributes.Single().ColumnType.ToString()));
         }
-        
+
+        public System.Data.Entity.DbSet<PackingListService.DataObjects.Travel> Travels { get; set; }
     }
 
 }

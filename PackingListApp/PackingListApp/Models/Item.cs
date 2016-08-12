@@ -1,13 +1,18 @@
 ﻿
 
+using Newtonsoft.Json;
+
 namespace PackingListApp.Models
 {
     public class Item 
     {
         //ATTRIBUTEN
         public string Id { get; set; }
+        [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
+        [JsonProperty(PropertyName = "amountNeeded")]
         public int AmountNeeded { get; set; }
+        [JsonProperty(PropertyName = "amountCollected")]
         public int AmountCollected { get; set; }
         //CONSTRUCTOR
         public Item() { }
