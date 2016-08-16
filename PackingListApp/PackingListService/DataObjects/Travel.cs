@@ -11,15 +11,15 @@ namespace PackingListService.DataObjects
         //ATTRIBUTEN
         //public Guid Id { get; set; }
         public string Name { get; set; }
-        public string Destination { get; set; }
+        public string Date { get; set; }
         public virtual IList<Categorie> Categories {get; private set;}
         //CONSTRUCTOR
         public Travel() { }
-        public Travel(string id, string name, string destination)
+        public Travel(string id, string name, string date)
         {
             Id = id;
             Name = name;
-            Destination = destination;
+            Date = date;
             Categories = new List<Categorie>();
         }
         //ANDERE METHODES

@@ -19,22 +19,36 @@ namespace PackingListApp.Views
         public TravelPage()
         {
             InitializeComponent();
-            userRepo = new UserRepository();
+            userRepo = new UserRepository();            
         }
-
-        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            try {
+             RefreshTravels();
+        }
+        private void BtnGoToItemPage_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Views/ItemPage.xaml", UriKind.Relative));
+        }
+        private void ListBoxItem_Hold(object sender, GestureEventArgs a)
+        {
+            //Venster om naam te wijzigen of te verwijderen
+                        
+        }
+        private async void RefreshTravels()
+        {
+            TravelContainer.Items.Clear();
+            try
+            {
                 string email = NavigationContext.QueryString["email"];
                 activeUser = await userRepo.Find(email);
-                foreach(Travel t in activeUser.Travels)
-                {              
+                foreach (Travel t in activeUser.Travels)
+                {
                     //1 ListBoxItem
                     ListBoxItem item = new ListBoxItem();
                     //Properties of ListBoxItem
-                    item.BorderThickness = new Thickness(0,0,0,1);
+                    item.BorderThickness = new Thickness(0, 0, 0, 1);
                     item.BorderBrush = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.White);
-                    item.Padding = new Thickness(0,10,0,10);
+                    item.Padding = new Thickness(0, 10, 0, 10);
                     item.IsSelected = false;
                     item.Hold += ListBoxItem_Hold;
                     //Content of ListBoxItem
@@ -65,6 +79,7 @@ namespace PackingListApp.Views
                     image.Width = 50;
                     button.Content = image;
                     button.BorderThickness = new Thickness(0, 0, 0, 0);
+                    button.Click += BtnGoToItemPage_Click;
                     grid.Children.Add(name);
                     Grid.SetRow(name, 0);
                     Grid.SetColumn(name, 0);
@@ -78,20 +93,10 @@ namespace PackingListApp.Views
                     TravelContainer.Items.Add(item);
                 }
             }
-            catch(MobileServiceInvalidOperationException ex)
+            catch (MobileServiceInvalidOperationException ex)
             {
-                NavigationService.Navigate(new Uri("/MainPage.xaml",UriKind.Relative));
+                NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
             }
-        }
-        private void ListBoxItem_Hold(object sender, GestureEventArgs a)
-        {
-            //test
-            ListBoxItem item = (ListBoxItem)sender;
-            if (item.IsSelected)
-                item.IsSelected = false;
-            else
-                item.IsSelected = true;
-            
         }
     }
 }

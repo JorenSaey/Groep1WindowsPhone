@@ -13,16 +13,16 @@ namespace PackingListApp.Models
         public string Id { get; set; }
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
-        [JsonProperty(PropertyName = "destination")]
-        public string Destination { get; set; }
+        [JsonProperty(PropertyName = "date")]
+        public string Date { get; set; }
         [JsonProperty(PropertyName = "categories")]
         public virtual IList<Categorie> Categories {get; private set;}
         //CONSTRUCTOR
         public Travel() { }
-        public Travel(string name, string destination)
+        public Travel(string name, string date)
         {
             Name = name;
-            Destination = destination;
+            Date = date;
             Categories = new List<Categorie>();
         }
         //ANDERE METHODES
