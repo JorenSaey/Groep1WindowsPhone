@@ -15,8 +15,9 @@ namespace PackingListService.DataObjects
         public int AmountCollected { get; set; }
         //CONSTRUCTOR
         public Item() { }
-        public Item(string name, int amountNeeded)
+        public Item(string id,string name, int amountNeeded)
         {
+            Id = id;
             Name = name;
             AmountNeeded = amountNeeded;
             AmountCollected = 0;

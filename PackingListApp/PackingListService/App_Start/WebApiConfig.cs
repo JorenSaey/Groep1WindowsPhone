@@ -8,9 +8,53 @@ using PackingListService.Models;
 using Microsoft.WindowsAzure.Mobile.Service;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
+using System.Web.Http.Filters;
+using System.Web.Http.Controllers;
+using System.Net.Http;
+using System.Linq;
 
 namespace PackingListService
 {
+    public class QueryableExpandAttribute : ActionFilterAttribute
+    {
+        private const string ODataExpandOption = "$expand=";
+
+        public QueryableExpandAttribute(string expand)
+        {
+            this.AlwaysExpand = expand;
+        }
+
+        public string AlwaysExpand { get; set; }
+
+        public override void OnActionExecuting(HttpActionContext actionContext)
+        {
+            HttpRequestMessage request = actionContext.Request;
+            string query = request.RequestUri.Query.Substring(1);
+            var parts = query.Split('&').ToList();
+            bool foundExpand = false;
+            for (int i = 0; i < parts.Count; i++)
+            {
+                string segment = parts[i];
+                if (segment.StartsWith(ODataExpandOption, StringComparison.Ordinal))
+                {
+                    foundExpand = true;
+                    parts[i] += "," + this.AlwaysExpand;
+                    break;
+                }
+            }
+
+            if (!foundExpand)
+            {
+                parts.Add(ODataExpandOption + this.AlwaysExpand);
+            }
+
+            UriBuilder modifiedRequestUri = new UriBuilder(request.RequestUri);
+            modifiedRequestUri.Query = string.Join("&",
+                                        parts.Where(p => p.Length > 0));
+            request.RequestUri = modifiedRequestUri.Uri;
+            base.OnActionExecuting(actionContext);
+        }
+    }
     public static class WebApiConfig
     {
         public static void Register()
@@ -33,7 +77,12 @@ namespace PackingListService
         protected override void Seed(MobileServiceContext context)
         {
             try {
-                context.Users.Add(new User("joren.saey@gmail.com", "joren", "saey", "dc00c903852bb19eb250aeba05e534a6d211629d77d055033806b783bae09937"));
+                User joren = new User("joren.saey@gmail.com", "joren", "saey", "dc00c903852bb19eb250aeba05e534a6d211629d77d055033806b783bae09937");
+                joren.AddTravel("Survivalweekend", "Ardennen");
+                joren.AddTravel("Businesstrip Marseille", "Marseille, Frakrijk");
+                joren.Travels[0].AddCategorie("Broeken");
+                joren.Travels[0].Categories[0].AddItem("Zwarte jeans",3);
+                context.Users.Add(joren);
                 context.SaveChanges();
             }
             catch (DbEntityValidationException dbEx)
@@ -47,25 +96,6 @@ namespace PackingListService
                 }
             }
         }
-    }
-
-    //public class MobileServiceInitializer : DropCreateDatabaseIfModelChanges<MobileServiceContext>
-    //{
-    //    protected override void Seed(MobileServiceContext context)
-    //    {
-    //        List<TodoItem> todoItems = new List<TodoItem>
-    //        {
-    //            new TodoItem { Id = Guid.NewGuid().ToString(), Text = "First item", Complete = false },
-    //            new TodoItem { Id = Guid.NewGuid().ToString(), Text = "Second item", Complete = false },
-    //        };
-
-    //        foreach (TodoItem todoItem in todoItems)
-    //        {
-    //            context.Set<TodoItem>().Add(todoItem);
-    //        }
-
-    //        base.Seed(context);
-    //    }
-    //}
+    }    
 }
 

@@ -29,7 +29,7 @@ namespace PackingListService.DataObjects
         //ANDERE METHODES
         public void AddTravel(string name, string destination)
         {
-            Travel travel = new Travel(name, destination);
+            Travel travel = new Travel(Id+name,name, destination);
             Travels.Add(travel);
         }
         public void RemoveTravel(string name)

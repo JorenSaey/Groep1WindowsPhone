@@ -1,5 +1,6 @@
 ﻿
 
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,8 +11,11 @@ namespace PackingListApp.Models
     {
         //ATTRIBUTEN
         public string Id { get; set; }
+        [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
+        [JsonProperty(PropertyName = "destination")]
         public string Destination { get; set; }
+        [JsonProperty(PropertyName = "categories")]
         public virtual IList<Categorie> Categories {get; private set;}
         //CONSTRUCTOR
         public Travel() { }

@@ -2,10 +2,11 @@
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Controllers;
-using System.Web.Http.OData;
 using Microsoft.WindowsAzure.Mobile.Service;
 using PackingListService.DataObjects;
 using PackingListService.Models;
+using System.Web.Http.OData;
+
 
 namespace PackingListService.Controllers
 {
@@ -18,13 +19,15 @@ namespace PackingListService.Controllers
             DomainManager = new EntityDomainManager<User>(context, Request, Services);
         }
 
-        // GET tables/User
+        // GET tables/User        
         public IQueryable<User> GetAllUser()
         {
             return Query(); 
         }
 
         // GET tables/User/48D68C86-6EA6-4C25-AA33-223FC9A27959
+        [EnableQuery(MaxExpansionDepth = 3)]
+        [QueryableExpand("Travels/Categories/Items")]
         public SingleResult<User> GetUser(string id)
         {
             return Lookup(id);

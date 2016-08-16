@@ -16,11 +16,11 @@ namespace PackingListApp.Models
             App.MobileService.GetTable<User>();
 
         //METHODS
-        public static async Task<bool> ValidateSignIn(string email, string password)
+        public static async Task<User> ValidateSignIn(string email, string password)
         {
             if (email == null || email.Equals("") || password == null || password.Equals(""))
             {
-                return false;
+                return null;
             }
             else
             {
@@ -28,7 +28,7 @@ namespace PackingListApp.Models
                 if (user == null)
                 {
                     //throw new ArgumentException("Aanmeldgegevens incorrect");
-                    return false;
+                    return null;
                 }
                 else
                 {
@@ -43,11 +43,14 @@ namespace PackingListApp.Models
                     if (!user.Password.Equals(hashedPassword))
                     {
                         //throw new ArgumentException("Aanmeldgegevens incorrect");
-                        return false;
+                        return null;
+                    }
+                    else
+                    {
+                        return user;
                     }
                 }
             }
-            return true;
         }
     }
 }
