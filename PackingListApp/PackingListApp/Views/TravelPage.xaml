@@ -80,7 +80,7 @@
                 </Image.Source>
             </Image>
         </Button>
-        <Button Grid.Row="2" Width="100" HorizontalAlignment="Right" Margin="-10,0">
+        <Button Grid.Row="2" Width="100" HorizontalAlignment="Right" Margin="-10,0" Click="Add_Click">
             <Image Width="30" Height="30">
                 <Image.Source>
                     <BitmapImage DecodePixelWidth="200"  UriSource="/Assets/Images/add.png"/>

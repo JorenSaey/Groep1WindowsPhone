@@ -8,6 +8,8 @@ using PackingListApp.Models;
 using System.Windows.Input;
 using System.Linq;
 using System.Windows.Media.Imaging;
+using System.Windows.Controls.Primitives;
+using PackingListApp.Views.PopUps;
 
 namespace PackingListApp.Views
 {
@@ -33,6 +35,22 @@ namespace PackingListApp.Views
         {
             //Venster om naam te wijzigen of te verwijderen
                         
+        }
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            this.Opacity = 0.20;
+            Popup add = new Popup();
+            TravelPopup popup = new TravelPopup(); 
+            popup.Width = Application.Current.Host.Content.ActualWidth-40;
+            add.Child = popup;
+            add.IsOpen = true;
+            add.VerticalOffset = 20;
+            add.HorizontalOffset = 20;
+            add.Closed += (s1, e1) =>
+            {
+                this.Opacity = 0;
+                RefreshTravels();
+            };
         }
         private async void RefreshTravels()
         {
