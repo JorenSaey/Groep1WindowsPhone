@@ -7,6 +7,7 @@ using Microsoft.WindowsAzure.MobileServices;
 using PackingListApp.Models;
 using System.Windows.Input;
 using System.Linq;
+using System.Windows.Media.Imaging;
 
 namespace PackingListApp.Views
 {
@@ -39,11 +40,14 @@ namespace PackingListApp.Views
                     //Content of ListBoxItem
                     Grid grid = new Grid();
                     ColumnDefinition col1 = new ColumnDefinition();
-                    col1.Width = new GridLength(300);
+                    col1.Width = new GridLength(280);
                     ColumnDefinition col2 = new ColumnDefinition();
-                    col2.Width = GridLength.Auto;
+                    col2.Width = new GridLength(50);
+                    ColumnDefinition col3 = new ColumnDefinition();
+                    col3.Width = GridLength.Auto;
                     grid.ColumnDefinitions.Add(col1);
                     grid.ColumnDefinitions.Add(col2);
+                    grid.ColumnDefinitions.Add(col3);
                     TextBlock name = new TextBlock();
                     name.Text = t.Name;
                     name.FontSize = 24;
@@ -53,12 +57,23 @@ namespace PackingListApp.Views
                     percentage.FontSize = 24;
                     percentage.HorizontalAlignment = HorizontalAlignment.Left;
                     percentage.VerticalAlignment = VerticalAlignment.Center;
+                    Button button = new Button();
+                    BitmapImage bitMapImage = new BitmapImage(new Uri("/Assets/Images/list.png", UriKind.Relative));
+                    bitMapImage.DecodePixelWidth = 200;
+                    Image image = new Image();
+                    image.Source = bitMapImage;
+                    image.Width = 50;
+                    button.Content = image;
+                    button.BorderThickness = new Thickness(0, 0, 0, 0);
                     grid.Children.Add(name);
                     Grid.SetRow(name, 0);
                     Grid.SetColumn(name, 0);
                     grid.Children.Add(percentage);
                     Grid.SetRow(percentage, 0);
                     Grid.SetColumn(percentage, 1);
+                    grid.Children.Add(button);
+                    Grid.SetRow(button, 0);
+                    Grid.SetColumn(button, 2);
                     item.Content = grid;
                     TravelContainer.Items.Add(item);
                 }
