@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PackingListApp.Models
 {
-    public class AccountValidator
+    public class UserRepository
     {
         //SERVICE
         private static MobileServiceCollection<User, User> users;
@@ -16,7 +16,7 @@ namespace PackingListApp.Models
             App.MobileService.GetTable<User>();
 
         //METHODS
-        public static async Task<User> ValidateSignIn(string email, string password)
+        public async Task<User> ValidateSignIn(string email, string password)
         {
             if (email == null || email.Equals("") || password == null || password.Equals(""))
             {
@@ -52,5 +52,11 @@ namespace PackingListApp.Models
                 }
             }
         }
+        public async Task<User> Find(string email)
+        {          
+                User user = await userTable.LookupAsync(email);
+                return user;   
+        }            
+
     }
 }

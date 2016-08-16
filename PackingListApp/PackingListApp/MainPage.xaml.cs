@@ -10,11 +10,13 @@ using System.Windows.Controls;
 namespace PackingListApp
 {
     public partial class MainPage : PhoneApplicationPage
-    {        
+    {
+        private UserRepository userRepo;
 
         public MainPage()
         {
-            InitializeComponent();           
+            InitializeComponent();
+            userRepo = new UserRepository();          
         }
         
         private async void MeldAan(object sender, RoutedEventArgs e)
@@ -22,7 +24,7 @@ namespace PackingListApp
             try {
                 BtnLogin.IsEnabled = false;
                 //returnt null als de aameldgegevens incorrect zijn
-                User user = await AccountValidator.ValidateSignIn(TxtEmail.Text, PswPassword.Password);
+                User user = await userRepo.ValidateSignIn(TxtEmail.Text, PswPassword.Password);
                 if (user != null)
                 {
                     TxtError.Text = "";

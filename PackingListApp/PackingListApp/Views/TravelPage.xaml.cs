@@ -6,27 +6,26 @@ using Microsoft.Phone.Controls;
 using Microsoft.WindowsAzure.MobileServices;
 using PackingListApp.Models;
 using System.Windows.Input;
+using System.Linq;
 
 namespace PackingListApp.Views
 {
     public partial class TravelPage : PhoneApplicationPage
     {
-        private static MobileServiceCollection<User, User> users;
-        private static IMobileServiceTable<User> userTable =
-            App.MobileService.GetTable<User>();
-
+        private UserRepository userRepo;
         private User activeUser;
 
         public TravelPage()
         {
             InitializeComponent();
+            userRepo = new UserRepository();
         }
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             try {
                 string email = NavigationContext.QueryString["email"];
-                activeUser = await userTable.LookupAsync(email);
+                activeUser = await userRepo.Find(email);
                 foreach(Travel t in activeUser.Travels)
                 {              
                     //1 ListBoxItem
@@ -43,11 +42,8 @@ namespace PackingListApp.Views
                     col1.Width = new GridLength(300);
                     ColumnDefinition col2 = new ColumnDefinition();
                     col2.Width = GridLength.Auto;
-                    ColumnDefinition col3 = new ColumnDefinition();
-                    col3.Width = GridLength.Auto;
                     grid.ColumnDefinitions.Add(col1);
                     grid.ColumnDefinitions.Add(col2);
-                    grid.ColumnDefinitions.Add(col3);
                     TextBlock name = new TextBlock();
                     name.Text = t.Name;
                     name.FontSize = 24;
@@ -57,19 +53,12 @@ namespace PackingListApp.Views
                     percentage.FontSize = 24;
                     percentage.HorizontalAlignment = HorizontalAlignment.Left;
                     percentage.VerticalAlignment = VerticalAlignment.Center;
-                    CheckBox box = new CheckBox();
-                    box.VerticalAlignment = VerticalAlignment.Center;
-                    box.HorizontalAlignment = HorizontalAlignment.Right;
-                    box.Click += CheckBox_Click;
                     grid.Children.Add(name);
                     Grid.SetRow(name, 0);
                     Grid.SetColumn(name, 0);
                     grid.Children.Add(percentage);
                     Grid.SetRow(percentage, 0);
                     Grid.SetColumn(percentage, 1);
-                    grid.Children.Add(box);
-                    Grid.SetRow(box, 0);
-                    Grid.SetColumn(box, 2);
                     item.Content = grid;
                     TravelContainer.Items.Add(item);
                 }
@@ -79,20 +68,15 @@ namespace PackingListApp.Views
                 NavigationService.Navigate(new Uri("/MainPage.xaml",UriKind.Relative));
             }
         }
-        private void CheckBox_Click(object sender, RoutedEventArgs e)
+        private void ListBoxItem_Hold(object sender, GestureEventArgs a)
         {
-            CheckBox box = (CheckBox)sender;
-            Grid grid = (Grid)box.Parent;
-            ListBoxItem item = (ListBoxItem)grid.Parent;
+            //test
+            ListBoxItem item = (ListBoxItem)sender;
             if (item.IsSelected)
                 item.IsSelected = false;
             else
                 item.IsSelected = true;
-        }
-        private void ListBoxItem_Hold(object sender, GestureEventArgs e)
-        {
-            //test
-            TravelContainer.Items.Add(new TextBlock() { Text =  "Het werkt"});
+            
         }
     }
 }

@@ -21,19 +21,25 @@
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Reizen" VerticalAlignment="Top" Padding="0,10" FontSize="32"/>
         <ScrollViewer Grid.Row="1">
-            <ListBox x:Name="TravelContainer" BorderBrush="White" BorderThickness="3" Padding="10" SelectionMode="Multiple">
+            <ListBox x:Name="TravelContainer" BorderBrush="White" BorderThickness="3" Padding="10" SelectionMode="Multiple" SelectionChanged="TravelContainer_SelectionChanged">
                 <!--Voorbeelddata-->
-                <!--
+                
                 <ListBoxItem BorderThickness="0,0,0,1" BorderBrush="White"  Padding="0,10">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="300"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="50"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="Barcelona"  FontSize="24" VerticalAlignment="Center"/>
                         <TextBlock Grid.Column="1" Text="23%" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        <CheckBox Grid.Column="2"/>
+                        <Button Grid.Column="2">
+                            <Image>
+                                <Image.Source>
+                                    <BitmapImage DecodePixelWidth="200"  UriSource="http://findicons.com/files/icons/1334/take_a_hike/128/backpack.png" />
+                                </Image.Source>
+                            </Image>
+                        </Button>
                     </Grid>
                 </ListBoxItem>
                 <ListBoxItem BorderThickness="0,0,0,1" BorderBrush="White"  Padding="0,10">
@@ -65,7 +71,7 @@
                         <TextBlock Grid.Column="0" Text="Jeroenstad"  FontSize="24" />
                         <TextBlock Grid.Column="1" Text="69%" FontSize="24" HorizontalAlignment="Left"/>
                     </Grid>
-                </ListBoxItem>-->
+                </ListBoxItem>
                 <!--Einde voorbeelddata-->
             </ListBox>
         </ScrollViewer>
