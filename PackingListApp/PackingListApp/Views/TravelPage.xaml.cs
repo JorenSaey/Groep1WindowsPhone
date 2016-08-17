@@ -38,17 +38,19 @@ namespace PackingListApp.Views
         }
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            this.Opacity = 0.20;
+            this.IsEnabled = false;
+            this.Opacity = 0.2;
             Popup add = new Popup();
-            TravelPopup popup = new TravelPopup(); 
+            TravelPopup popup = new TravelPopup(userRepo,activeUser); 
             popup.Width = Application.Current.Host.Content.ActualWidth-40;
             add.Child = popup;
             add.IsOpen = true;
-            add.VerticalOffset = 20;
+            add.VerticalOffset = 50;
             add.HorizontalOffset = 20;
             add.Closed += (s1, e1) =>
             {
-                this.Opacity = 0;
+                this.Opacity = 1;
+                this.IsEnabled = true;
                 RefreshTravels();
             };
         }

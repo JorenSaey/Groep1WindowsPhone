@@ -18,13 +18,11 @@ namespace PackingListService.Controllers
             MobileServiceContext context = new MobileServiceContext();
             DomainManager = new EntityDomainManager<User>(context, Request, Services);
         }
-
         // GET tables/User        
         public IQueryable<User> GetAllUser()
         {
             return Query(); 
         }
-
         // GET tables/User/48D68C86-6EA6-4C25-AA33-223FC9A27959
         [EnableQuery(MaxExpansionDepth = 3)]
         [QueryableExpand("Travels/Categories/Items")]
@@ -32,21 +30,24 @@ namespace PackingListService.Controllers
         {
             return Lookup(id);
         }
-
         // PATCH tables/User/48D68C86-6EA6-4C25-AA33-223FC9A27959
+        [EnableQuery(MaxExpansionDepth = 3)]
+        [QueryableExpand("Travels/Categories/Items")]
         public Task<User> PatchUser(string id, Delta<User> patch)
         {
              return UpdateAsync(id, patch);
         }
-
         // POST tables/User
+        [EnableQuery(MaxExpansionDepth = 3)]
+        [QueryableExpand("Travels/Categories/Items")]
         public async Task<IHttpActionResult> PostUser(User item)
         {
             User current = await InsertAsync(item);
             return CreatedAtRoute("Tables", new { id = current.Id }, current);
         }
-
         // DELETE tables/User/48D68C86-6EA6-4C25-AA33-223FC9A27959
+        [EnableQuery(MaxExpansionDepth = 3)]
+        [QueryableExpand("Travels/Categories/Items")]
         public Task DeleteUser(string id)
         {
              return DeleteAsync(id);

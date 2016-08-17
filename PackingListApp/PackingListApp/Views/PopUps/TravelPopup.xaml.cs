@@ -8,18 +8,26 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using System.Windows.Controls.Primitives;
+using PackingListApp.Models;
+using Microsoft.WindowsAzure.MobileServices;
 
 namespace PackingListApp.Views.PopUps
 {
     public partial class TravelPopup : PhoneApplicationPage
     {
-        public TravelPopup()
+        private UserRepository userRepo;
+        private User activeUser;
+        public TravelPopup(UserRepository userRepo, User user)
         {
             InitializeComponent();
+            this.userRepo = userRepo;
+            this.activeUser = user;
         }
         private void Ok_Click(object sender, RoutedEventArgs e)
-        {
-            ClosePopup();
+        {            
+             activeUser.AddTravel(TxtName.Text, txtDate.Text);
+             userRepo.Update(activeUser);
+             ClosePopup();            
         }
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {

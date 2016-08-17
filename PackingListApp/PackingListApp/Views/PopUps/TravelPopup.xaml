@@ -13,25 +13,17 @@
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True">
     <Border BorderBrush="white" BorderThickness="3" Margin="10">
-        <Grid Margin="10,10,10,10">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="80"/>
-            </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Text="Maak nieuwe reis" FontSize="32"/>
-            <TextBlock Grid.Row="1" Text="Naam" FontSize="24"/>
-            <TextBox Grid.Row="2"/>
-            <TextBlock Grid.Row="3" Text="Datum" FontSize="24"/>
-            <TextBox Grid.Row="4"/>
-            <StackPanel Grid.Row="5" Orientation="Horizontal">
+        <StackPanel Margin="10">
+            <TextBlock Text="Maak nieuwe reis" FontSize="32"/>
+            <TextBlock Text="Naam" FontSize="24"/>
+            <TextBox x:Name="TxtName" />
+            <TextBlock  Text="Datum" FontSize="24"/>
+            <TextBox x:Name="txtDate" />
+            <StackPanel  Orientation="Horizontal">
                 <Button Content="Ok" Click="Ok_Click"/>
                 <Button Content="Annuleer" Click="Cancel_Click"/>
             </StackPanel>
-        </Grid>
+        </StackPanel>
     </Border>
 
 </phone:PhoneApplicationPage>

@@ -19,8 +19,9 @@ namespace PackingListApp.Models
         public virtual IList<Categorie> Categories {get; private set;}
         //CONSTRUCTOR
         public Travel() { }
-        public Travel(string name, string date)
+        public Travel(string id,string name, string date)
         {
+            Id = id;
             Name = name;
             Date = date;
             Categories = new List<Categorie>();

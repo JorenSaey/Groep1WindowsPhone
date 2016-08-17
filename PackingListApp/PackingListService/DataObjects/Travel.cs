@@ -12,7 +12,7 @@ namespace PackingListService.DataObjects
         //public Guid Id { get; set; }
         public string Name { get; set; }
         public string Date { get; set; }
-        public virtual IList<Categorie> Categories {get; private set;}
+        public virtual IList<Categorie> Categories {get; set;}
         //CONSTRUCTOR
         public Travel() { }
         public Travel(string id, string name, string date)

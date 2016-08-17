@@ -33,9 +33,9 @@ namespace PackingListApp.Models
             Travels = new List<Travel>();
         }
         //ANDERE METHODES
-        public void AddTravel(string name, string destination)
+        public void AddTravel(string name, string date)
         {
-            Travel travel = new Travel(name, destination);
+            Travel travel = new Travel(Id+name,name, date);
             Travels.Add(travel);
         }
         public void RemoveTravel(string name)
