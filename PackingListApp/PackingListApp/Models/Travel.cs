@@ -10,34 +10,19 @@ namespace PackingListApp.Models
     public class Travel 
     {
         //ATTRIBUTEN
+        [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
         [JsonProperty(PropertyName = "date")]
         public string Date { get; set; }
+        
         [JsonProperty(PropertyName = "categories")]
         public virtual IList<Categorie> Categories {get; private set;}
+        [JsonProperty(PropertyName = "userId")]
+        public string UserId { get; set; }
         //CONSTRUCTOR
-        public Travel() { }
-        public Travel(string id,string name, string date)
-        {
-            Id = id;
-            Name = name;
-            Date = date;
-            Categories = new List<Categorie>();
-        }
-        //ANDERE METHODES
-        public void AddCategorie(string name)
-        {
-            Categorie categorie = new Categorie(name);
-            Categories.Add(categorie);
-        }
-        public void RemoveCategorie(string name)
-        {
-            Categorie categorie = Categories.Where(c => c.Name == name).FirstOrDefault();
-            if (categorie != null)
-                Categories.Remove(categorie);
-        }
+        public Travel() {}        
         
     }
 }

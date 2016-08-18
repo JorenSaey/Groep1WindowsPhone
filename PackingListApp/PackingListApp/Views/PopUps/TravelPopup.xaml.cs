@@ -15,19 +15,29 @@ namespace PackingListApp.Views.PopUps
 {
     public partial class TravelPopup : PhoneApplicationPage
     {
-        private UserRepository userRepo;
+        private TravelRepository travelRepo;
         private User activeUser;
-        public TravelPopup(UserRepository userRepo, User user)
+        public TravelPopup(User activeUser)
         {
             InitializeComponent();
-            this.userRepo = userRepo;
-            this.activeUser = user;
+            this.activeUser = activeUser;
+            this.travelRepo = new TravelRepository();
         }
-        private async void Ok_Click(object sender, RoutedEventArgs e)
-        {            
-             activeUser.AddTravel(TxtName.Text, txtDate.Text);
-             await userRepo.Update(activeUser);
-             ClosePopup();            
+        private void Ok_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                travelRepo.CreateTravel(TxtName.Text, txtDate.Text, activeUser.Id);
+            }
+            catch(MobileServiceInvalidOperationException ex)
+            {
+                
+            }
+            finally
+            {
+                ClosePopup();
+            }
+                         
         }
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {

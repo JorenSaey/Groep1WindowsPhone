@@ -41,7 +41,7 @@ namespace PackingListApp.Views
             this.IsEnabled = false;
             this.Opacity = 0.2;
             Popup add = new Popup();
-            TravelPopup popup = new TravelPopup(userRepo,activeUser); 
+            TravelPopup popup = new TravelPopup(activeUser); 
             popup.Width = Application.Current.Host.Content.ActualWidth-40;
             add.Child = popup;
             add.IsOpen = true;

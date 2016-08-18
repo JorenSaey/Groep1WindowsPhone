@@ -11,10 +11,11 @@ namespace PackingListService.Controllers
 {
     public class TravelController : TableController<Travel>
     {
+        private MobileServiceContext context;
         protected override void Initialize(HttpControllerContext controllerContext)
         {
             base.Initialize(controllerContext);
-            MobileServiceContext context = new MobileServiceContext();
+            context = new MobileServiceContext();
             DomainManager = new EntityDomainManager<Travel>(context, Request, Services);
         }
 
@@ -39,8 +40,13 @@ namespace PackingListService.Controllers
         // POST tables/Travel
         public async Task<IHttpActionResult> PostTravel(Travel item)
         {
-            Travel current = await InsertAsync(item);
-            return CreatedAtRoute("Tables", new { id = current.Id }, current);
+            User user = context.Users.Where(u => u.Id == item.UserId).FirstOrDefault();
+            if (user != null)
+            {
+                user.AddTravel(item.Name,item.Date);
+                await context.SaveChangesAsync();
+            }
+            return CreatedAtRoute("Tables", new { id = item.Id }, item);
         }
 
         // DELETE tables/Travel/48D68C86-6EA6-4C25-AA33-223FC9A27959
