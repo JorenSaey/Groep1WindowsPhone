@@ -129,15 +129,15 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Mobile.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\WindowsAzure.MobileServices.Backend.1.0.478\lib\net45\Microsoft.WindowsAzure.Mobile.Service.dll</HintPath>
+      <HintPath>..\packages\WindowsAzure.MobileServices.Backend.1.0.390\lib\net45\Microsoft.WindowsAzure.Mobile.Service.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Mobile.Service.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\WindowsAzure.MobileServices.Backend.Entity.1.0.478\lib\net45\Microsoft.WindowsAzure.Mobile.Service.Entity.dll</HintPath>
+      <HintPath>..\packages\WindowsAzure.MobileServices.Backend.Entity.1.0.390\lib\net45\Microsoft.WindowsAzure.Mobile.Service.Entity.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Mobile.Service.Tables, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\WindowsAzure.MobileServices.Backend.Tables.1.0.478\lib\net45\Microsoft.WindowsAzure.Mobile.Service.Tables.dll</HintPath>
+      <HintPath>..\packages\WindowsAzure.MobileServices.Backend.Tables.1.0.390\lib\net45\Microsoft.WindowsAzure.Mobile.Service.Tables.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -250,9 +250,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Performance\Microsoft.ServiceBus.MessagingPerformanceCounters.man" />
