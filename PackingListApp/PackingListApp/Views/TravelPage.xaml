@@ -73,7 +73,7 @@
                 </ListBoxItem>-->
             <!--Einde voorbeelddata-->
         </ListBox>
-        <Button Grid.Row="2" Width="100" HorizontalAlignment="Left" Margin="-10,0">
+        <Button Grid.Row="2" Width="100" HorizontalAlignment="Left" Margin="-10,0" Click="Remove_Click">
             <Image Width="30" Height="30">
                 <Image.Source>
                     <BitmapImage DecodePixelWidth="200"  UriSource="/Assets/Images/remove.png" />

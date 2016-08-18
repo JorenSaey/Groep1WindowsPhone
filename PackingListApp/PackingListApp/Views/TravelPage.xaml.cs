@@ -54,6 +54,15 @@ namespace PackingListApp.Views
                 RefreshTravels();
             };
         }
+        private void Remove_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (ListBoxItem item in TravelContainer.SelectedItems)
+            {
+                Grid grid = (Grid)item.Content;
+                //TODO
+            }
+            RefreshTravels();
+        }
         private async void RefreshTravels()
         {
             TravelContainer.Items.Clear();
