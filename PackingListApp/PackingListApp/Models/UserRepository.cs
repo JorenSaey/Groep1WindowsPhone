@@ -57,14 +57,17 @@ namespace PackingListApp.Models
                 User user = await userTable.LookupAsync(email);
                 return user;   
         }  
-        public async void Update(User user)
+        public async Task<User> Update(User user)
         {
             try {
+                User user2 = user;
                 await userTable.UpdateAsync(user);
+                return null;
             }
             catch(MobileServiceInvalidOperationException ex)
             {
                 var exc = ex;
+                return null;
             }
         }          
 

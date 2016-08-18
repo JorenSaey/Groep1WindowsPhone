@@ -23,10 +23,10 @@ namespace PackingListApp.Views.PopUps
             this.userRepo = userRepo;
             this.activeUser = user;
         }
-        private void Ok_Click(object sender, RoutedEventArgs e)
+        private async void Ok_Click(object sender, RoutedEventArgs e)
         {            
              activeUser.AddTravel(TxtName.Text, txtDate.Text);
-             userRepo.Update(activeUser);
+             await userRepo.Update(activeUser);
              ClosePopup();            
         }
         private void Cancel_Click(object sender, RoutedEventArgs e)

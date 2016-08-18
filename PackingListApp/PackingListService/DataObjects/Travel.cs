@@ -1,6 +1,8 @@
 ﻿using Microsoft.WindowsAzure.Mobile.Service;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -13,6 +15,7 @@ namespace PackingListService.DataObjects
         public string Name { get; set; }
         public string Date { get; set; }
         public virtual IList<Categorie> Categories {get; set;}
+        public string UserId { get; set; }
         //CONSTRUCTOR
         public Travel() { }
         public Travel(string id, string name, string date)

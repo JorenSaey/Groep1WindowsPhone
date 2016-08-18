@@ -6,16 +6,18 @@ using Microsoft.WindowsAzure.Mobile.Service;
 using PackingListService.DataObjects;
 using PackingListService.Models;
 using System.Web.Http.OData;
-
+using System.Collections.Generic;
+using AutoMapper;
 
 namespace PackingListService.Controllers
 {
     public class UserController : TableController<User>
     {
+        private MobileServiceContext context;
         protected override void Initialize(HttpControllerContext controllerContext)
         {
             base.Initialize(controllerContext);
-            MobileServiceContext context = new MobileServiceContext();
+            context = new MobileServiceContext();
             DomainManager = new EntityDomainManager<User>(context, Request, Services);
         }
         // GET tables/User        
@@ -30,24 +32,15 @@ namespace PackingListService.Controllers
         {
             return Lookup(id);
         }
-        // PATCH tables/User/48D68C86-6EA6-4C25-AA33-223FC9A27959
-        [EnableQuery(MaxExpansionDepth = 3)]
-        [QueryableExpand("Travels/Categories/Items")]
         public Task<User> PatchUser(string id, Delta<User> patch)
         {
-             return UpdateAsync(id, patch);
+            return UpdateAsync(id, patch);
         }
-        // POST tables/User
-        [EnableQuery(MaxExpansionDepth = 3)]
-        [QueryableExpand("Travels/Categories/Items")]
         public async Task<IHttpActionResult> PostUser(User item)
         {
             User current = await InsertAsync(item);
             return CreatedAtRoute("Tables", new { id = current.Id }, current);
         }
-        // DELETE tables/User/48D68C86-6EA6-4C25-AA33-223FC9A27959
-        [EnableQuery(MaxExpansionDepth = 3)]
-        [QueryableExpand("Travels/Categories/Items")]
         public Task DeleteUser(string id)
         {
              return DeleteAsync(id);

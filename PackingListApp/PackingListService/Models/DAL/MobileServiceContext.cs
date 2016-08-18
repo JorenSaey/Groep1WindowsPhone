@@ -30,6 +30,7 @@ namespace PackingListService.Models
 
         //public DbSet<TodoItem> TodoItems { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Travel> Travels { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -43,8 +44,7 @@ namespace PackingListService.Models
                 new AttributeToColumnAnnotationConvention<TableColumnAttribute, string>(
                     "ServiceTableColumn", (property, attributes) => attributes.Single().ColumnType.ToString()));
         }
-
-        public System.Data.Entity.DbSet<PackingListService.DataObjects.Travel> Travels { get; set; }
+        
     }
 
 }
