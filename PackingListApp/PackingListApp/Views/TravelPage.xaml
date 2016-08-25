@@ -31,7 +31,7 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" x:Name="TravelName" Text="{Binding Name}" FontSize="24" VerticalAlignment="Center"/>
                         <TextBlock Grid.Column="1" x:Name="TravelPercent" Text="0%" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        <Button Grid.Column="2">
+                        <Button Grid.Column="2" BorderThickness="0">
                             <Image Width="50">
                                 <Image.Source>
                                     <BitmapImage DecodePixelWidth="200"  UriSource="\Assets\Images\list.png" />

@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Controls.Primitives;
 using PackingListApp.Views.PopUps;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace PackingListApp.Views
 {
@@ -19,7 +20,7 @@ namespace PackingListApp.Views
         private UserRepository userRepo;
         private TravelRepository travelRepo;
         private User activeUser;
-        private IList<Travel> travels;
+        private ObservableCollection<Travel> travels;
 
         public TravelPage()
         {
@@ -55,14 +56,14 @@ namespace PackingListApp.Views
             {
                 this.Opacity = 1;
                 this.IsEnabled = true;
-                RefreshTravels();
+                InitTravels();
             };
         }
         private void Remove_Click(object sender, RoutedEventArgs e)
         {
             Travel travel = (Travel)TravelContainer.SelectedItem;
-            travelRepo.DeleteTravel(travel.Id);            
-            RefreshTravels();
+            travelRepo.DeleteTravel(travel.Id);
+            travels.Remove(travel);
         }
         private async void InitTravels()
         {
@@ -70,22 +71,10 @@ namespace PackingListApp.Views
             {
                 string email = NavigationContext.QueryString["email"];
                 activeUser = await userRepo.Find(email);
-                travels = activeUser.Travels;
+                travels = new ObservableCollection<Travel>(activeUser.Travels);
                 TravelContainer.DataContext = travels;
             }
             catch (MobileServiceInvalidOperationException ex)
-            {
-                NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
-            }
-        }
-        private async void RefreshTravels()
-        {
-            try {
-                activeUser = await userRepo.Find(activeUser.Id);
-                travels = activeUser.Travels;
-                TravelContainer.DataContext = travels;
-            }
-            catch(MobileServiceInvalidOperationException ex)
             {
                 NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
             }
