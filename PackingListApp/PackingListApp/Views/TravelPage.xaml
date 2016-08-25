@@ -20,7 +20,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Reizen" VerticalAlignment="Top" Padding="0,10" FontSize="32"/>
-        <ListBox Grid.Row="1" x:Name="TravelContainer" BorderBrush="White" BorderThickness="3" Padding="10" SelectionMode="Multiple" ItemsSource="{Binding}">
+        <ListBox Grid.Row="1" x:Name="TravelContainer" BorderBrush="White" BorderThickness="3" Padding="10" SelectionMode="Single" ItemsSource="{Binding}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>

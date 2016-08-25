@@ -17,13 +17,15 @@ namespace PackingListApp.Views
     public partial class TravelPage : PhoneApplicationPage
     {
         private UserRepository userRepo;
+        private TravelRepository travelRepo;
         private User activeUser;
         private IList<Travel> travels;
 
         public TravelPage()
         {
             InitializeComponent();
-            userRepo = new UserRepository();            
+            userRepo = new UserRepository();
+            travelRepo = new TravelRepository();         
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -58,12 +60,8 @@ namespace PackingListApp.Views
         }
         private void Remove_Click(object sender, RoutedEventArgs e)
         {
-            foreach (ListBoxItem item in TravelContainer.SelectedItems)
-            {
-                Grid grid = (Grid)item.Content;
-                //TODO
-
-            }
+            Travel travel = (Travel)TravelContainer.SelectedItem;
+            travelRepo.DeleteTravel(travel.Id);            
             RefreshTravels();
         }
         private async void InitTravels()
