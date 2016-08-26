@@ -27,7 +27,7 @@ namespace PackingListApp.Views.PopUps
         {
             try
             {
-                travelRepo.UpdateTravel(activeTravel.Id, TxtName.Text, txtDate.Text);
+                travelRepo.UpdateTravel(activeTravel.UserId,activeTravel.Id, TxtName.Text, txtDate.Text);
             }
             catch (MobileServiceInvalidOperationException ex)
             {
