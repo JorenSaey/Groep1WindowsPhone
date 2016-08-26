@@ -23,7 +23,7 @@
         <ListBox Grid.Row="1" x:Name="TravelContainer" BorderBrush="White" BorderThickness="3" Padding="10" SelectionMode="Single" ItemsSource="{Binding}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <Grid Hold="ListBoxItem_Hold">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="280"/>
                             <ColumnDefinition Width="50"/>

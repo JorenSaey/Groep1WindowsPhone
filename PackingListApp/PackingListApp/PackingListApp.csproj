@@ -118,6 +118,9 @@
     <Compile Include="Views\PopUps\TravelPopup.xaml.cs">
       <DependentUpon>TravelPopup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PopUps\TravelPopupRename.xaml.cs">
+      <DependentUpon>TravelPopupRename.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
@@ -139,6 +142,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PopUps\TravelPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PopUps\TravelPopupRename.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

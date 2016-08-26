@@ -38,8 +38,26 @@ namespace PackingListApp.Views
         }
         private void ListBoxItem_Hold(object sender, GestureEventArgs a)
         {
-            //Venster om naam te wijzigen of te verwijderen
-                        
+            this.IsEnabled = false;
+            this.Opacity = 0.2;
+            Popup add = new Popup();
+            Travel travel = (sender as Grid).DataContext as Travel;
+            TravelPopupRename popup = new TravelPopupRename(travel);
+            popup.Width = Application.Current.Host.Content.ActualWidth - 40;
+            add.Child = popup;
+            add.IsOpen = true;
+            add.VerticalOffset = 50;
+            add.HorizontalOffset = 20;
+            add.Closed += (s1, e1) =>
+            {
+                this.Opacity = 1;
+                this.IsEnabled = true;
+                Travel tr =  travels.Where(t => t.Id == travel.Id).FirstOrDefault();
+                travels.Remove(tr);
+                tr.Name = popup.TxtName.Text;
+                tr.Date = popup.txtDate.Text;
+                travels.Add(tr);
+            };
         }
         private void Add_Click(object sender, RoutedEventArgs e)
         {
