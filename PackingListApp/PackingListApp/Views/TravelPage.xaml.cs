@@ -56,7 +56,7 @@ namespace PackingListApp.Views
             {
                 this.Opacity = 1;
                 this.IsEnabled = true;
-                InitTravels();
+                travels.Add(new Travel() { Name = popup.TxtName.Text, Date = popup.txtDate.Text });
             };
         }
         private void Remove_Click(object sender, RoutedEventArgs e)
