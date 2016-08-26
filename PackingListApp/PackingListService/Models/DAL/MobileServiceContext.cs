@@ -43,6 +43,14 @@ namespace PackingListService.Models
             modelBuilder.Conventions.Add(
                 new AttributeToColumnAnnotationConvention<TableColumnAttribute, string>(
                     "ServiceTableColumn", (property, attributes) => attributes.Single().ColumnType.ToString()));
+            modelBuilder.Entity<Travel>()
+            .HasMany(t => t.Categories)
+            .WithRequired()
+            .WillCascadeOnDelete(true);
+            modelBuilder.Entity<Categorie>()
+            .HasMany(c => c.Items)
+            .WithRequired()
+            .WillCascadeOnDelete(true);
         }
         
     }
