@@ -18,6 +18,7 @@ namespace PackingListApp
     {
         //http://code.tutsplus.com/tutorials/how-to-add-azure-mobile-services-to-a-windows-phone-app--cms-24178
         public static MobileServiceClient MobileService = new MobileServiceClient("http://localhost:4390/");
+
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
         /// </summary>
@@ -29,8 +30,16 @@ namespace PackingListApp
         /// </summary>
         public App()
         {
-            // Global handler for uncaught exceptions.
-            UnhandledException += Application_UnhandledException;
+            //IconicTileData tile = new IconicTileData()
+            //{
+            //    Title = "Packing List App",
+            //    IconImage = new Uri("http://findicons.com/files/icons/1334/take_a_hike/128/backpack.png", UriKind.Absolute),
+            //    //BackgroundColor = System.Windows.Media.Colors.Cyan,
+            //};
+
+            //ShellTile.Create(new Uri("/MainPage.xaml", UriKind.Relative), tile, true);
+            //// Global handler for uncaught exceptions.
+            //UnhandledException += Application_UnhandledException;
 
             // Standard XAML initialization
             InitializeComponent();
