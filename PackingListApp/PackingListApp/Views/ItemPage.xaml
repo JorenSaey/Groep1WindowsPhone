@@ -31,46 +31,25 @@
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="90"/>
-                                            <ColumnDefinition Width="90"/>
-                                        </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Column="0" Text="{Binding Name}" FontSize="20" VerticalAlignment="Center"/>
-                                        <TextBlock Grid.Column="1" Text="{Binding Ratio}" Margin="10,0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                                        <Button Width="100" Grid.Column="2" Content="-" VerticalAlignment="Center"/>
-                                        <Button Width="100" Grid.Column="3" Content="+" VerticalAlignment="Center"/>
-                                    </Grid>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="90"/>
+                                                <ColumnDefinition Width="90"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" Text="{Binding Name}" FontSize="20" VerticalAlignment="Center"/>
+                                            <TextBlock Grid.Column="1" Text="{Binding Ratio}" Margin="10,0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                            <Button Width="100" Grid.Column="2" Content="-" VerticalAlignment="Center"/>
+                                            <Button Width="100" Grid.Column="3" Content="+" VerticalAlignment="Center"/>
+                                        </Grid>
                                     </StackPanel>
-                               </DataTemplate>
-                            </ListBox.ItemTemplate>                            
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
                         </ListBox>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
-        <!--<ListBoxItem>
-                <StackPanel>
-                    <TextBlock Text="Categorie 1" FontSize="24"/>
-                    <ListBox Padding="18,10">
-                        <StackPanel>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="80"/>
-                                    <ColumnDefinition Width="130"/>
-                                    <ColumnDefinition Width="100"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="Item 1" FontSize="20" VerticalAlignment="Center"/>
-                                <TextBlock Grid.Column="1" Text="2/10" Margin="40,0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                                <Button Width="100" Grid.Column="2" Content="-" VerticalAlignment="Center"/>
-                                <Button Width="100" Grid.Column="3" Content="+" VerticalAlignment="Center"/>
-                            </Grid>
-                        </StackPanel>
-                    </ListBox>
-                </StackPanel>
-            </ListBoxItem>-->
         </ListBox>
         <Button Grid.Row="2" Width="100" HorizontalAlignment="Left" Margin="-10,0">
             <Image Width="30" Height="30">
@@ -79,7 +58,7 @@
                 </Image.Source>
             </Image>
         </Button>
-        <Button Grid.Row="2" Width="100" HorizontalAlignment="Right" Margin="-10,0">
+        <Button Grid.Row="2" Width="100" HorizontalAlignment="Right" Margin="-10,0" Click="Add_Click">
             <Image Width="30" Height="30">
                 <Image.Source>
                     <BitmapImage DecodePixelWidth="200"  UriSource="/Assets/Images/add.png"/>

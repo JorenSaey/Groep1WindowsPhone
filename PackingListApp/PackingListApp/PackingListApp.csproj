@@ -100,6 +100,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\CategorieRepository.cs" />
     <Compile Include="Models\TravelRepository.cs" />
     <Compile Include="Models\UserRepository.cs" />
     <Compile Include="Models\Categorie.cs" />
@@ -115,6 +116,9 @@
     <Compile Include="ViewModels\CategorieViewModel.cs" />
     <Compile Include="Views\ItemPage.xaml.cs">
       <DependentUpon>ItemPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PopUps\CategoriePopup.xaml.cs">
+      <DependentUpon>CategoriePopup.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PopUps\TravelPopup.xaml.cs">
       <DependentUpon>TravelPopup.xaml</DependentUpon>
@@ -139,6 +143,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ItemPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PopUps\CategoriePopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

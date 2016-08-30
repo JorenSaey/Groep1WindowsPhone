@@ -14,7 +14,10 @@ namespace PackingListApp.ViewModels
         public string Id { get; set; }
         public CategorieViewModel(Categorie categorie)
         {
-            Items = categorie.Items.Select(i => new ItemViewModel(i)).ToList();
+            if (categorie.Items != null)
+                Items = categorie.Items.Select(i => new ItemViewModel(i)).ToList();
+            else
+                Items = new List<ItemViewModel>();
             Name = categorie.Name;
             Id = categorie.Id;
         }
