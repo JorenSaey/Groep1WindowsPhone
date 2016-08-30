@@ -100,7 +100,10 @@ namespace PackingListApp.Views
 
         private void NavigateToItemPage(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/Views/ItemPage.xaml", UriKind.Relative));
+            Button button = (Button)sender;
+            Grid grid = (Grid)button.Parent;
+            Travel travel = grid.DataContext as Travel;
+            NavigationService.Navigate(new Uri("/Views/ItemPage.xaml?id="+travel.Id, UriKind.Relative));
         }
     }
 }
