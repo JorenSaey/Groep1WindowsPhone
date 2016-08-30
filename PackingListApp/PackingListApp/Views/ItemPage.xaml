@@ -14,22 +14,50 @@
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid Margin="10,10,10,10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-
-        <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="MY APPLICATION" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>
-
-        <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-
-        </Grid>
+        <TextBlock Grid.Row="0" Text="Benodigdheden" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="32" Padding="0,10"/>
+        <ListBox Grid.Row="1" x:Name="ItemContainer" BorderBrush="White" BorderThickness="3" Padding="10" SelectionMode="Single" ItemsSource="{Binding}">
+            <ListBoxItem>
+                <StackPanel>
+                    <TextBlock Text="Categorie 1" FontSize="24"/>
+                    <ListBox Padding="18,10">
+                        <StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="130"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="Item 1" FontSize="20" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="2/10" Margin="40,0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                <Button Width="100" Grid.Column="2" Content="-" VerticalAlignment="Center"/>
+                                <Button Width="100" Grid.Column="3" Content="+" VerticalAlignment="Center"/>
+                            </Grid>
+                        </StackPanel>
+                    </ListBox>
+                </StackPanel>
+            </ListBoxItem>
+        </ListBox>
+        <Button Grid.Row="2" Width="100" HorizontalAlignment="Left" Margin="-10,0">
+            <Image Width="30" Height="30">
+                <Image.Source>
+                    <BitmapImage DecodePixelWidth="200"  UriSource="/Assets/Images/remove.png" />
+                </Image.Source>
+            </Image>
+        </Button>
+        <Button Grid.Row="2" Width="100" HorizontalAlignment="Right" Margin="-10,0">
+            <Image Width="30" Height="30">
+                <Image.Source>
+                    <BitmapImage DecodePixelWidth="200"  UriSource="/Assets/Images/add.png"/>
+                </Image.Source>
+            </Image>
+        </Button>
     </Grid>
 
 </phone:PhoneApplicationPage>

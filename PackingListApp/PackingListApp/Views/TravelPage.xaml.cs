@@ -97,5 +97,10 @@ namespace PackingListApp.Views
                 NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
             }
         }
+
+        private void NavigateToItemPage(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Views/ItemPage.xaml", UriKind.Relative));
+        }
     }
 }
