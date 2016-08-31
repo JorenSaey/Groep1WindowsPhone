@@ -42,7 +42,7 @@ namespace PackingListApp.Views
             this.Opacity = 0.2;
             Popup add = new Popup();
             Travel travel = (sender as Grid).DataContext as Travel;
-            TravelPopupRename popup = new TravelPopupRename(travel);
+            TravelPopupRename popup = new TravelPopupRename(travel,travels);
             popup.Width = Application.Current.Host.Content.ActualWidth - 40;
             add.Child = popup;
             add.IsOpen = true;
@@ -52,11 +52,6 @@ namespace PackingListApp.Views
             {
                 this.Opacity = 1;
                 this.IsEnabled = true;
-                Travel tr =  travels.Where(t => t.Id == travel.Id).FirstOrDefault();
-                travels.Remove(tr);
-                tr.Name = popup.TxtName.Text;
-                tr.Date = popup.txtDate.Text;
-                travels.Add(tr);
             };
         }
         private void Add_Click(object sender, RoutedEventArgs e)
