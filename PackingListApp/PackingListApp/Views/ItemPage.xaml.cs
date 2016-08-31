@@ -64,7 +64,7 @@ namespace PackingListApp.Views
             Popup add = new Popup();
             CategorieViewModel cvm = (sender as MenuItem).DataContext as CategorieViewModel;
             Categorie ca = new Categorie() { Id = cvm.Id};
-            ItemPopup popup = new ItemPopup(ca);
+            ItemPopup popup = new ItemPopup(ca,cvm.Items);
             popup.Width = Application.Current.Host.Content.ActualWidth - 40;
             add.Child = popup;
             add.IsOpen = true;
@@ -73,12 +73,7 @@ namespace PackingListApp.Views
             add.Closed += (s1, e1) =>
             {
                 this.Opacity = 1;
-                this.IsEnabled = true;
-                cvm.Items.Add(new ItemViewModel(new Item() { Id = cvm.Id+popup.TxtName.Text,
-                    AmountNeeded = Int32.Parse(popup.txtAmountNeeded.Text),
-                    AmountCollected = 0,
-                    Name = popup.TxtName.Text,
-                    CategorieId = cvm.Id}));
+                this.IsEnabled = true;                
             };
         }
         private void Rename_Categorie_Click(object sender, RoutedEventArgs e)
@@ -91,6 +86,14 @@ namespace PackingListApp.Views
             CategorieViewModel cvm = categories.Where(c => c.Id == ivm.CategorieId).FirstOrDefault();
             itemRepo.DeleteItem(ivm.Id);
             cvm.Items.Remove(ivm);
+        }
+        private void Plus_One(object sender, RoutedEventArgs e)
+        {
+           
+        }
+        private void Minus_One(object sender, RoutedEventArgs e)
+        {
+
         }
         private async void InitItems()
         {
