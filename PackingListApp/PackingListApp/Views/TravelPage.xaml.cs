@@ -36,7 +36,7 @@ namespace PackingListApp.Views
         {
             NavigationService.Navigate(new Uri("/Views/ItemPage.xaml", UriKind.Relative));
         }
-        private void ListBoxItem_Hold(object sender, GestureEventArgs a)
+        private void ListBoxItem_Hold(object sender, System.Windows.Input.GestureEventArgs a)
         {
             this.IsEnabled = false;
             this.Opacity = 0.2;

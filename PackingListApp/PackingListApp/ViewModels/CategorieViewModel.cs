@@ -1,6 +1,7 @@
 ﻿using PackingListApp.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,15 +10,15 @@ namespace PackingListApp.ViewModels
 {
     public class CategorieViewModel
     {
-        public IList<ItemViewModel> Items { get; set; }
+        public ObservableCollection<ItemViewModel> Items { get; set; }
         public string Name { get; set; }
         public string Id { get; set; }
         public CategorieViewModel(Categorie categorie)
         {
             if (categorie.Items != null)
-                Items = categorie.Items.Select(i => new ItemViewModel(i)).ToList();
+                Items = new ObservableCollection<ItemViewModel>(categorie.Items.Select(i => new ItemViewModel(i)).ToList());
             else
-                Items = new List<ItemViewModel>();
+                Items = new ObservableCollection<ItemViewModel>();
             Name = categorie.Name;
             Id = categorie.Id;
         }

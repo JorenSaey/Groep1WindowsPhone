@@ -1,0 +1,31 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="PackingListApp.Views.PopUps.ItemPopup"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Border BorderBrush="white" BorderThickness="3" Margin="10">
+        <StackPanel Margin="10">
+            <TextBlock Text="Maak nieuw item" FontSize="32"/>
+            <TextBlock Text="Naam" FontSize="24"/>
+            <TextBox x:Name="TxtName" />
+            <TextBlock  Text="Aantal nodig" FontSize="24"/>
+            <TextBox InputScope="Number" x:Name="txtAmountNeeded" />
+            <StackPanel  Orientation="Horizontal">
+                <Button Content="Ok" Click="Ok_Click"/>
+                <Button Content="Annuleer" Click="Cancel_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Border>
+
+</phone:PhoneApplicationPage>

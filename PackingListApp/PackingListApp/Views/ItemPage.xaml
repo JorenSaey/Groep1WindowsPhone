@@ -1,4 +1,5 @@
 ﻿<phone:PhoneApplicationPage
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     Loaded="Page_Loaded"
     x:Class="PackingListApp.Views.ItemPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -22,14 +23,20 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Text="Benodigdheden" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="32" Padding="0,10"/>
-        <ListBox Grid.Row="1" x:Name="ItemContainer" BorderBrush="White" BorderThickness="3" Padding="10" ItemsSource="{Binding}">
+        <ListBox Grid.Row="1" x:Name= "CategorieContainer" BorderBrush="White" BorderThickness="3" Padding="10" ItemsSource="{Binding}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
+                        <toolkit:ContextMenuService.ContextMenu>
+                            <toolkit:ContextMenu IsZoomEnabled="True" x:Name="ContextMenu" >
+                                <toolkit:MenuItem x:Name="MenuAdd" Header="Voeg item toe" Click="Add_Item_Click"/>
+                                <toolkit:MenuItem x:Name="MenuRename" Header="Wijzig categorie" Click="Rename_Categorie_Click"/>
+                            </toolkit:ContextMenu>
+                        </toolkit:ContextMenuService.ContextMenu>
                         <TextBlock Text="{Binding Name}" FontSize="24"/>
-                        <ListBox ItemsSource="{Binding Items}" Padding="10,0,0,0">
+                        <ListBox ItemsSource="{Binding Items}" x:Name="ItemContainer" Padding="10,0,0,0">
                             <ListBox.ItemTemplate>
-                                <DataTemplate>
+                                <DataTemplate>                                    
                                     <StackPanel>
                                         <Grid>
                                             <Grid.ColumnDefinitions>
@@ -51,7 +58,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Grid.Row="2" Width="100" HorizontalAlignment="Left" Margin="-10,0">
+        <Button Grid.Row="2" Width="100" HorizontalAlignment="Left" Margin="-10,0" Click="Remove_Click">
             <Image Width="30" Height="30">
                 <Image.Source>
                     <BitmapImage DecodePixelWidth="200"  UriSource="/Assets/Images/remove.png" />

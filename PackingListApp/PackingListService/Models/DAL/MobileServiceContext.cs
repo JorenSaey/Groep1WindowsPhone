@@ -32,6 +32,7 @@ namespace PackingListService.Models
         public DbSet<User> Users { get; set; }
         public DbSet<Travel> Travels { get; set; }
         public DbSet<Categorie> Categories { get; set; }
+        public DbSet<Item> Items { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -54,6 +55,7 @@ namespace PackingListService.Models
             .WillCascadeOnDelete(true);
         }
 
+        
     }
 
 }

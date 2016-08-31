@@ -18,16 +18,16 @@ namespace PackingListApp.Models
             Categorie categorie = new Categorie() { Name = name,  TravelId = travelId };
             await categorieTable.InsertAsync(categorie);
         }
-        //public async void DeleteTravel(string id)
-        //{
-        //    Travel travel = await Find(id);
-        //    await travelTable.DeleteAsync(travel);
-        //}
-        //public async Task<Travel> Find(string id)
-        //{
-        //    Travel travel = await travelTable.LookupAsync(id);
-        //    return travel;
-        //}
+        public async void DeleteCategorie(string id)
+        {
+            Categorie categorie = await Find(id);
+            await categorieTable.DeleteAsync(categorie);
+        }
+        public async Task<Categorie> Find(string id)
+        {
+            Categorie categorie = await categorieTable.LookupAsync(id);
+            return categorie;
+        }
         //public async void UpdateTravel(string id, string name, string date)
         //{
         //    Travel travel = await Find(id);

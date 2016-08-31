@@ -7,6 +7,7 @@ namespace PackingListApp.Models
     public class Item 
     {
         //ATTRIBUTEN
+        [JsonProperty(PropertyName ="id")]
         public string Id { get; set; }
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
@@ -14,6 +15,8 @@ namespace PackingListApp.Models
         public int AmountNeeded { get; set; }
         [JsonProperty(PropertyName = "amountCollected")]
         public int AmountCollected { get; set; }
+        [JsonProperty(PropertyName="categorieId")]
+        public string CategorieId { get; set; }
         //CONSTRUCTOR
         public Item() { }
         public Item(string name, int amountNeeded)

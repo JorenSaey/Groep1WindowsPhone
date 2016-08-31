@@ -24,7 +24,7 @@ namespace PackingListService.DataObjects
         //ANDERE METHODES
         public void AddItem(string name, int amountNeeded)
         {
-            Item item = new Item(Id+name,name, amountNeeded);
+            Item item = new Item(Id + name, name, amountNeeded) { CategorieId = this.Id};
             Items.Add(item);
         }
         public void RemoveItem(string name)

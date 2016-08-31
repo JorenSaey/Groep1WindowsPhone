@@ -13,6 +13,7 @@ namespace PackingListService.DataObjects
         public string Name { get; set; }
         public int AmountNeeded { get; set; }
         public int AmountCollected { get; set; }
+        public string CategorieId { get; set; }
         //CONSTRUCTOR
         public Item() { }
         public Item(string id,string name, int amountNeeded)
