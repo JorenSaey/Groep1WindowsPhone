@@ -80,13 +80,9 @@ namespace PackingListService
                 User test = new User("a","ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb");
                 test.AddTravel("Survivalweekend", "Zomer 2016");
                 test.AddTravel("Businesstrip Marseille", "31 September 2016");
-                test.Travels[0].AddCategorie("Broeken");
-                test.Travels[0].Categories[0].AddItem("Zwarte jeans", 3);
                 User joren = new User("joren.saey@gmail.com", "dc00c903852bb19eb250aeba05e534a6d211629d77d055033806b783bae09937");
                 joren.AddTravel("Survivalweekend", "Zomer 2016");
                 joren.AddTravel("Businesstrip Marseille", "31 September 2016");
-                joren.Travels[0].AddCategorie("Broeken");
-                joren.Travels[0].Categories[0].AddItem("Zwarte jeans",3);
                 context.Users.Add(joren);
                 context.Users.Add(test);
                 context.SaveChanges();

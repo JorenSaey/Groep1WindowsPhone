@@ -22,7 +22,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" x:Name="TxtTitle" Text="Benodigdheden" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="32" Padding="0,10"/>
+        <TextBlock Grid.Row="0" x:Name="TxtTitle" Text="" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="32" Padding="0,10"/>
         <ListBox Grid.Row="1" x:Name= "CategorieContainer" BorderBrush="White" BorderThickness="3" Padding="10" ItemsSource="{Binding}">
             <ListBox.ItemTemplate>
                 <DataTemplate>

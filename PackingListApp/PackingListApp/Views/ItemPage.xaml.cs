@@ -92,7 +92,6 @@ namespace PackingListApp.Views
             Item item = ivm.Item;
             itemRepo.updateAmountNeeded(item.Id, 1);
             ivm.Ratio = item.AmountCollected + "/" + item.AmountNeeded;
-            InitItems();
         }
         private void Minus_One(object sender, RoutedEventArgs e)
         {
@@ -100,7 +99,6 @@ namespace PackingListApp.Views
             Item item = ivm.Item;
             itemRepo.updateAmountNeeded(item.Id, -1);
             ivm.Ratio = item.AmountCollected + "/" + item.AmountNeeded;
-            InitItems();
         }
         private async void InitItems()
         {

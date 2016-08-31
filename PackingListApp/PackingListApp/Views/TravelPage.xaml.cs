@@ -32,10 +32,6 @@ namespace PackingListApp.Views
         {
              InitTravels();
         }
-        private void BtnGoToItemPage_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("/Views/ItemPage.xaml", UriKind.Relative));
-        }
         private void ListBoxItem_Hold(object sender, System.Windows.Input.GestureEventArgs a)
         {
             this.IsEnabled = false;
