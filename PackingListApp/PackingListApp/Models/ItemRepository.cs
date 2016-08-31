@@ -28,6 +28,20 @@ namespace PackingListApp.Models
             Item item = await itemTable.LookupAsync(id);
             return item;
         }
+
+        public async void updateAmountNeeded(string id, int i)
+        {
+            Item item = await itemTable.LookupAsync(id);
+            if (i == 1)
+            {
+                item.Add();
+            } else
+            {
+                item.Remove();
+            }
+            await itemTable.UpdateAsync(item);
+        }
+
         //public async void UpdateTravel(string id, string name, string date)
         //{
         //    Travel travel = await Find(id);

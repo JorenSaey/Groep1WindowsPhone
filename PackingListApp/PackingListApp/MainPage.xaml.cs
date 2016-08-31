@@ -16,7 +16,9 @@ namespace PackingListApp
         public MainPage()
         {
             InitializeComponent();
-            userRepo = new UserRepository();          
+            userRepo = new UserRepository();
+            TxtEmail.Text = "a";
+            PswPassword.Password = "a";         
         }
         
         private async void MeldAan(object sender, RoutedEventArgs e)

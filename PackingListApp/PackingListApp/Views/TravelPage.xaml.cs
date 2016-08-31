@@ -62,7 +62,7 @@ namespace PackingListApp.Views
             this.IsEnabled = false;
             this.Opacity = 0.2;
             Popup add = new Popup();
-            TravelPopup popup = new TravelPopup(activeUser);
+            TravelPopup popup = new TravelPopup(activeUser, travels);
             popup.Width = Application.Current.Host.Content.ActualWidth-40;
             add.Child = popup;
             add.IsOpen = true;
@@ -72,7 +72,6 @@ namespace PackingListApp.Views
             {
                 this.Opacity = 1;
                 this.IsEnabled = true;
-                travels.Add(new Travel() {Id=activeUser.Id+popup.TxtName.Text, Name = popup.TxtName.Text, Date = popup.txtDate.Text, UserId = activeUser.Id });
             };
         }
         private void Remove_Click(object sender, RoutedEventArgs e)

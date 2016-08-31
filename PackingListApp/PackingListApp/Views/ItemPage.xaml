@@ -22,46 +22,65 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="Benodigdheden" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="32" Padding="0,10"/>
+        <TextBlock Grid.Row="0" x:Name="TxtTitle" Text="Benodigdheden" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="32" Padding="0,10"/>
         <ListBox Grid.Row="1" x:Name= "CategorieContainer" BorderBrush="White" BorderThickness="3" Padding="10" ItemsSource="{Binding}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
-                        <toolkit:ContextMenuService.ContextMenu>
-                            <toolkit:ContextMenu IsZoomEnabled="True" x:Name="ContextMenu" >
-                                <toolkit:MenuItem x:Name="MenuAdd" Header="Voeg item toe" Click="Add_Item_Click"/>
-                                <toolkit:MenuItem x:Name="MenuRename" Header="Wijzig categorie" Click="Rename_Categorie_Click"/>
-                            </toolkit:ContextMenu>
-                        </toolkit:ContextMenuService.ContextMenu>
-                        <TextBlock Text="{Binding Name}" FontSize="24"/>
-                        <ListBox ItemsSource="{Binding Items}" x:Name="ItemContainer" Padding="10,0,0,0" ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>                                    
-                                    <StackPanel>
-                                        <toolkit:ContextMenuService.ContextMenu>
-                                            <toolkit:ContextMenu IsZoomEnabled="True" x:Name="ContextMenuItem" >
-                                                <toolkit:MenuItem Header="Verwijder item" Click="Remove_Item_Click"/>
-                                            </toolkit:ContextMenu>
-                                        </toolkit:ContextMenuService.ContextMenu>
-                                        <Grid>
+                    <Border BorderBrush="Black" BorderThickness="5" Background="Gray" CornerRadius="8">
+                        <Grid Margin="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <toolkit:ContextMenuService.ContextMenu>
+                                <toolkit:ContextMenu IsZoomEnabled="True" x:Name="ContextMenu" >
+                                    <toolkit:MenuItem x:Name="MenuAdd" Header="Voeg item toe" Click="Add_Item_Click"/>
+                                    <toolkit:MenuItem x:Name="MenuRename" Header="Wijzig categorie" Click="Rename_Categorie_Click"/>
+                                </toolkit:ContextMenu>
+                            </toolkit:ContextMenuService.ContextMenu>
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Name}" FontSize="24" Padding="5,0,0,0"/>
+                            <ListBox Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Items}" x:Name="ItemContainer" Margin="1,0,0,0" Padding="5,0,0,0" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Background="Black" Margin="0,0,5,0">
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="90"/>
-                                                <ColumnDefinition Width="90"/>
+                                                <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
-                                            <TextBlock Grid.Column="0" Text="{Binding Name}" FontSize="20" VerticalAlignment="Center"/>
-                                            <TextBlock Grid.Column="1" Text="{Binding Ratio, Mode=TwoWay}" Margin="10,0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                                            <Button Width="100" Grid.Column="2" Content="-" VerticalAlignment="Center" Click="Minus_One"/>
-                                            <Button Width="100" Grid.Column="3" Content="+" VerticalAlignment="Center" Click="Plus_One"/>
+                                            <toolkit:ContextMenuService.ContextMenu>
+                                                <toolkit:ContextMenu IsZoomEnabled="True" x:Name="ContextMenuItem" >
+                                                    <toolkit:MenuItem Header="Verwijder item" Click="Remove_Item_Click"/>
+                                                </toolkit:ContextMenu>
+                                            </toolkit:ContextMenuService.ContextMenu>
+                                            <Grid Grid.Column="0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="230"/>
+                                                    <ColumnDefinition Width="50"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Grid.Column="0" Text="{Binding Name}" Padding="5,0,0,0" FontSize="20" VerticalAlignment="Center" />
+                                                <TextBlock Grid.Column="1" Text="{Binding Ratio}" VerticalAlignment="Center"/>
+                                                <Button HorizontalContentAlignment="Center" Width="75" Grid.Column="2" Content="-" VerticalAlignment="Center" Click="Minus_One" HorizontalAlignment="Right"/>
+                                                <Button HorizontalContentAlignment="Center" Width="75" Grid.Column="3" Content="+" VerticalAlignment="Center" Click="Plus_One" HorizontalAlignment="Right"/>
+                                            </Grid>
                                         </Grid>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                    </StackPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Grid>
+                    </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
+            <ListBox.Resources>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Margin" Value="0,10,0,0"/>
+                    <Setter Property="Padding" Value="0"/>
+                </Style>
+            </ListBox.Resources>
         </ListBox>
         <Button Grid.Row="2" Width="100" HorizontalAlignment="Left" Margin="-10,0" Click="Remove_Click">
             <Image Width="30" Height="30">

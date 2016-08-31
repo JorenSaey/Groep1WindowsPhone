@@ -56,7 +56,40 @@ namespace PackingListApp.Models
         {          
                 User user = await userTable.LookupAsync(email);
                 return user;   
-        }                  
+        }
+
+        /*
+        public async Task<User> Register(string email, string password, string passwordConfirm, string firstName, string lastName)
+        {
+            if (email == null || email.Equals("") || password == null || password.Equals("") ||
+                firstName == null || firstName.Equals("") || lastName == null || lastName.Equals(""))
+            {
+                throw new ArgumentException("Alle velden moeten ingevuld zijn!");
+            }
+            else
+            {
+                if (password != passwordConfirm)
+                {
+                    throw new ArgumentException("Wachtwoorden komen niet overeen.");
+                }
+                else
+                {
+                    SHA256Managed crypt = new SHA256Managed();
+                    StringBuilder hash = new StringBuilder();
+                    byte[] crypto = crypt.ComputeHash(Encoding.UTF8.GetBytes(password), 0, Encoding.UTF8.GetByteCount(password));
+                    foreach (byte theByte in crypto)
+                    {
+                        hash.Append(theByte.ToString("x2"));
+                    }
+                    string hashedPassword = hash.ToString();
+
+                    User user = new User { Email = email, Password = password, FirstName = firstName, LastName = lastName };
+                    user = await userTable.InsertAsync(user);
+                }
+                return user;
+            }
+        }
+        */
 
     }
 }

@@ -38,7 +38,7 @@ namespace PackingListApp.Views
             this.IsEnabled = false;
             this.Opacity = 0.2;
             Popup add = new Popup();
-            CategoriePopup popup = new CategoriePopup(activeTravel);
+            CategoriePopup popup = new CategoriePopup(activeTravel, categories);
             popup.Width = Application.Current.Host.Content.ActualWidth - 40;
             add.Child = popup;
             add.IsOpen = true;
@@ -48,7 +48,6 @@ namespace PackingListApp.Views
             {
                 this.Opacity = 1;
                 this.IsEnabled = true;
-                categories.Add(new CategorieViewModel(new Categorie() { Id = activeTravel.Id+popup.TxtName.Text,Name = popup.TxtName.Text,TravelId = activeTravel.Id}));
             };
         }
         private void Remove_Click(object sender, RoutedEventArgs e)
@@ -89,7 +88,11 @@ namespace PackingListApp.Views
         }
         private void Plus_One(object sender, RoutedEventArgs e)
         {
-           
+            ItemViewModel ivm = (sender as Button).DataContext as ItemViewModel;
+            Item item = ivm.Item;
+            item.Add();
+            ivm.Ratio = item.AmountCollected + "/" + item.AmountNeeded;
+            itemRepo.updateAmountNeeded(item.Id, 1);
         }
         private void Minus_One(object sender, RoutedEventArgs e)
         {
@@ -99,6 +102,7 @@ namespace PackingListApp.Views
         {
             string id = NavigationContext.QueryString["id"];
             activeTravel = await travelRepo.Find(id);
+            TxtTitle.Text = activeTravel.Name;
             categories = new ObservableCollection<CategorieViewModel>(activeTravel.Categories.Select(c => new CategorieViewModel(c)).ToList());
             CategorieContainer.DataContext = categories;
         }

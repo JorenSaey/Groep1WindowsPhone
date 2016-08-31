@@ -31,8 +31,7 @@ namespace PackingListApp.Models
         public async void UpdateTravel(string id,string name, string date)
         {
             Travel travel = await Find(id);
-            await travelTable.DeleteAsync(travel);
-            CreateTravel(name, date, travel.UserId);
+            await travelTable.UpdateAsync(travel);
         }
     }
 }
