@@ -23,24 +23,38 @@
         <ListBox Grid.Row="1" x:Name="TravelContainer" BorderBrush="White" BorderThickness="3" Padding="10" SelectionMode="Single" ItemsSource="{Binding}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid Hold="ListBoxItem_Hold">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="280"/>
-                            <ColumnDefinition Width="50"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" x:Name="TravelName" Text="{Binding Name}" FontSize="24" VerticalAlignment="Center"/>
-                        <TextBlock Grid.Column="1" x:Name="TravelPercent" Text="0%" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        <Button Grid.Column="2" BorderThickness="0" Click="NavigateToItemPage">
-                            <Image Width="50">
-                                <Image.Source>
-                                    <BitmapImage DecodePixelWidth="200"  UriSource="\Assets\Images\list.png" />
-                                </Image.Source>
-                            </Image>
-                        </Button>
-                    </Grid>
+                    <Border BorderBrush="Black" BorderThickness="5" Background="Gray" CornerRadius="8">
+                        <Grid Hold="ListBoxItem_Hold">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="280"/>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Column="0" Grid.Row="0" x:Name="TravelName" Text="{Binding Name}" FontSize="24" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                            <TextBlock Grid.Column="1" Grid.RowSpan="2" x:Name="TravelPercent" Text="0%" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Button Grid.Column="2" Grid.RowSpan="2" BorderThickness="0" Click="NavigateToItemPage">
+                                <Image Width="50">
+                                    <Image.Source>
+                                        <BitmapImage DecodePixelWidth="200"  UriSource="\Assets\Images\list.png" />
+                                    </Image.Source>
+                                </Image>
+                            </Button>
+                            <TextBlock Grid.Column="0" Grid.Row="1" x:Name="TravelDate" Text="{Binding Date}" FontSize="16" Margin="10,0,0,0"/>
+                        </Grid>
+                    </Border>
                 </DataTemplate>
-            </ListBox.ItemTemplate>            
+            </ListBox.ItemTemplate>
+            <ListBox.Resources>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Margin" Value="0,10,0,0"/>
+                    <Setter Property="Padding" Value="0"/>
+                </Style>
+            </ListBox.Resources>
         </ListBox>
         <Button Grid.Row="2" Width="100" HorizontalAlignment="Left" Margin="-10,0" Click="Remove_Click">
             <Image Width="30" Height="30">

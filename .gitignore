@@ -242,3 +242,4 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/PackingListApp/PackingListService/App_Data/aspnet-PackingListService-20160808080233.mdf
