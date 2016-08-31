@@ -26,7 +26,7 @@
         <ListBox Grid.Row="1" x:Name= "CategorieContainer" BorderBrush="White" BorderThickness="3" Padding="10" ItemsSource="{Binding}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Border BorderBrush="Black" BorderThickness="5" Background="Gray" CornerRadius="8">
+                    <Border BorderBrush="Black" BorderThickness="5" Background="Gray" CornerRadius="8" Padding="0,0,0,5">
                         <Grid Margin="0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
