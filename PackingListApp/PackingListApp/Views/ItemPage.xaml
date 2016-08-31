@@ -38,6 +38,11 @@
                             <ListBox.ItemTemplate>
                                 <DataTemplate>                                    
                                     <StackPanel>
+                                        <toolkit:ContextMenuService.ContextMenu>
+                                            <toolkit:ContextMenu IsZoomEnabled="True" x:Name="ContextMenuItem" >
+                                                <toolkit:MenuItem Header="Verwijder item" Click="Remove_Item_Click"/>
+                                            </toolkit:ContextMenu>
+                                        </toolkit:ContextMenuService.ContextMenu>
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>

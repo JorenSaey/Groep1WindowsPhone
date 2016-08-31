@@ -28,11 +28,13 @@ namespace PackingListApp.ViewModels
         public string Id { get; set; }
         public string Name { get; set; }
         public string Ratio { get; set; }
+        public string CategorieId { get; set; }
         public ItemViewModel(Item item)
         {
             Id = item.Id;
             Name = item.Name;
             Ratio= item.AmountCollected+"/"+item.AmountNeeded;
+            CategorieId = item.CategorieId;
         }
     }
 }

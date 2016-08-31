@@ -20,12 +20,14 @@ namespace PackingListApp.Views
         private Travel activeTravel;
         private TravelRepository travelRepo;
         private CategorieRepository categorieRepo;
+        private ItemRepository itemRepo;
         private ObservableCollection<CategorieViewModel> categories;
         public ItemPage()
         {
             InitializeComponent();
             travelRepo = new TravelRepository();
             categorieRepo = new CategorieRepository();
+            itemRepo = new ItemRepository();
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -82,6 +84,13 @@ namespace PackingListApp.Views
         private void Rename_Categorie_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+        private void Remove_Item_Click(object sender, RoutedEventArgs e)
+        {
+            ItemViewModel ivm = (sender as MenuItem).DataContext as ItemViewModel;
+            CategorieViewModel cvm = categories.Where(c => c.Id == ivm.CategorieId).FirstOrDefault();
+            itemRepo.DeleteItem(ivm.Id);
+            cvm.Items.Remove(ivm);
         }
         private async void InitItems()
         {

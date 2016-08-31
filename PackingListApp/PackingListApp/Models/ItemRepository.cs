@@ -18,16 +18,16 @@ namespace PackingListApp.Models
             Item item = new Item(name,amountNeeded) { CategorieId = categorieId };
             await itemTable.InsertAsync(item);
         }
-        //public async void DeleteTravel(string id)
-        //{
-        //    Travel travel = await Find(id);
-        //    await travelTable.DeleteAsync(travel);
-        //}
-        //public async Task<Travel> Find(string id)
-        //{
-        //    Travel travel = await travelTable.LookupAsync(id);
-        //    return travel;
-        //}
+        public async void DeleteItem(string id)
+        {
+            Item item = await Find(id);
+            await itemTable.DeleteAsync(item);
+        }
+        public async Task<Item> Find(string id)
+        {
+            Item item = await itemTable.LookupAsync(id);
+            return item;
+        }
         //public async void UpdateTravel(string id, string name, string date)
         //{
         //    Travel travel = await Find(id);
