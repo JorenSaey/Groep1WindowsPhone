@@ -31,6 +31,10 @@ namespace PackingListApp.Models
         public async void UpdateTravel(string id,string name, string date)
         {
             Travel travel = await Find(id);
+            travel.Categories = null;
+            travel.Id = id;
+            travel.Name = name;
+            travel.Date = date;
             await travelTable.UpdateAsync(travel);
         }
     }

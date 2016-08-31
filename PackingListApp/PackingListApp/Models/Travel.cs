@@ -18,7 +18,7 @@ namespace PackingListApp.Models
         public string Date { get; set; }
         
         [JsonProperty(PropertyName = "categories")]
-        public virtual IList<Categorie> Categories {get; private set;}
+        public virtual IList<Categorie> Categories {get; set;}
         [JsonProperty(PropertyName = "userId")]
         public string UserId { get; set; }
         //CONSTRUCTOR
