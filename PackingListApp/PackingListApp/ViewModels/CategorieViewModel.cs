@@ -25,6 +25,7 @@ namespace PackingListApp.ViewModels
     }
     public class ItemViewModel
     {
+        public Item Item { get; set; }
         public string Id { get; set; }
         public string Name { get; set; }
         public string Ratio { get; set; }
@@ -35,6 +36,7 @@ namespace PackingListApp.ViewModels
             Name = item.Name;
             Ratio= item.AmountCollected+"/"+item.AmountNeeded;
             CategorieId = item.CategorieId;
+            this.Item = item;
         }
     }
 }

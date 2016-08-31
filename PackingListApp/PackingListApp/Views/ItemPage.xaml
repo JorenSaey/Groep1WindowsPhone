@@ -34,7 +34,7 @@
                             </toolkit:ContextMenu>
                         </toolkit:ContextMenuService.ContextMenu>
                         <TextBlock Text="{Binding Name}" FontSize="24"/>
-                        <ListBox ItemsSource="{Binding Items}" x:Name="ItemContainer" Padding="10,0,0,0">
+                        <ListBox ItemsSource="{Binding Items}" x:Name="ItemContainer" Padding="10,0,0,0" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>                                    
                                     <StackPanel>
@@ -51,9 +51,9 @@
                                                 <ColumnDefinition Width="90"/>
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Grid.Column="0" Text="{Binding Name}" FontSize="20" VerticalAlignment="Center"/>
-                                            <TextBlock Grid.Column="1" Text="{Binding Ratio}" Margin="10,0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                                            <Button Width="100" Grid.Column="2" Content="-" VerticalAlignment="Center"/>
-                                            <Button Width="100" Grid.Column="3" Content="+" VerticalAlignment="Center"/>
+                                            <TextBlock Grid.Column="1" Text="{Binding Ratio, Mode=TwoWay}" Margin="10,0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                            <Button Width="100" Grid.Column="2" Content="-" VerticalAlignment="Center" Click="Minus_One"/>
+                                            <Button Width="100" Grid.Column="3" Content="+" VerticalAlignment="Center" Click="Plus_One"/>
                                         </Grid>
                                     </StackPanel>
                                 </DataTemplate>
