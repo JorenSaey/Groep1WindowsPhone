@@ -27,8 +27,7 @@ namespace PackingListApp.Models
                 User user = await userTable.LookupAsync(email);
                 if (user == null)
                 {
-                    //throw new ArgumentException("Aanmeldgegevens incorrect");
-                    return null;
+                    throw new ArgumentException("Aanmeldgegevens incorrect");
                 }
                 else
                 {
@@ -42,8 +41,7 @@ namespace PackingListApp.Models
                     string hashedPassword = hash.ToString();
                     if (!user.Password.Equals(hashedPassword))
                     {
-                        //throw new ArgumentException("Aanmeldgegevens incorrect");
-                        return null;
+                        throw new ArgumentException("Aanmeldgegevens incorrect");
                     }
                     else
                     {
@@ -57,12 +55,10 @@ namespace PackingListApp.Models
                 User user = await userTable.LookupAsync(email);
                 return user;   
         }
-
-        /*
-        public async Task<User> Register(string email, string password, string passwordConfirm, string firstName, string lastName)
+        
+        public async void Register(string email, string password, string passwordConfirm)
         {
-            if (email == null || email.Equals("") || password == null || password.Equals("") ||
-                firstName == null || firstName.Equals("") || lastName == null || lastName.Equals(""))
+            if (email == null || email.Equals("") || password == null || password.Equals(""))
             {
                 throw new ArgumentException("Alle velden moeten ingevuld zijn!");
             }
@@ -83,13 +79,11 @@ namespace PackingListApp.Models
                     }
                     string hashedPassword = hash.ToString();
 
-                    User user = new User { Email = email, Password = password, FirstName = firstName, LastName = lastName };
-                    user = await userTable.InsertAsync(user);
+                    User user = new User { Email = email, Password = hashedPassword };
+                    await userTable.InsertAsync(user);
                 }
-                return user;
             }
         }
-        */
 
     }
 }

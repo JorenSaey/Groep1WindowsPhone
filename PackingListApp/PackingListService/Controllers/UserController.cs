@@ -38,8 +38,10 @@ namespace PackingListService.Controllers
         }
         public async Task<IHttpActionResult> PostUser(User item)
         {
-            User current = await InsertAsync(item);
-            return CreatedAtRoute("Tables", new { id = current.Id }, current);
+            context.Users.Add(new User(item.Email, item.Password));
+            await context.SaveChangesAsync();
+
+            return CreatedAtRoute("Tables", new { id = item.Id }, item);
         }
         public Task DeleteUser(string id)
         {

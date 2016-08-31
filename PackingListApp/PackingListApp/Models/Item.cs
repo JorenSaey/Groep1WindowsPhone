@@ -28,11 +28,13 @@ namespace PackingListApp.Models
         //ANDERE METHODES
         public void Add()
         {
-            AmountCollected++;
+            if (AmountCollected < AmountNeeded)
+                AmountCollected++;
         }
         public void Remove()
         {
-            AmountCollected--;
+            if (AmountCollected > 0)
+                AmountCollected--;
         }        
         public bool IsCompleted()
         {

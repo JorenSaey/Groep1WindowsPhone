@@ -30,14 +30,14 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="0" x:Name="TxtNewUser" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Nieuwe gebruiker" VerticalAlignment="Top" Padding="0,10" FontSize="32"/>
-        <TextBlock Grid.Row="2" Grid.Column="0" x:Name="txtUsername" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Gebruikersnaam" VerticalAlignment="Top" Height="38" FontSize="24"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" x:Name="txtUsername" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Height="38" FontSize="24"/>
         <TextBox Grid.Row="3" Grid.Column="0" x:Name="TxtboxUsername" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
         <TextBlock Grid.Row="4" Grid.Column="0" x:Name="TxtPassword" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Wachtwoord" VerticalAlignment="Top" Height="38" FontSize="24"/>
         <PasswordBox Grid.Row="5" Grid.Column="0" x:Name="PwBoxPassword" HorizontalAlignment="Stretch" VerticalAlignment="Top" />
         <TextBlock Grid.Row="6" Grid.Column="0" x:Name="TxtConfirmPassword" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Bevestig wachtwoord" VerticalAlignment="Top" Height="38" FontSize="24"/>
         <PasswordBox Grid.Row="7" Grid.Column="0" x:Name="PwBoxConfirmPassword" HorizontalAlignment="Stretch" VerticalAlignment="Top" />
         <TextBlock Grid.Row="6"  Grid.Column="0" x:Name="TxtError" Text="" Foreground="Red" FontSize="18" Margin="17,0"/>
-        <Button Grid.Row="8" Grid.Column="0" x:Name="BtnLogin" Content="Registreer" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0"/>
+        <Button Grid.Row="8" Grid.Column="0" x:Name="BtnLogin" Content="Registreer" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0" Click="Registreer"/>
     </Grid>
 
 </phone:PhoneApplicationPage>

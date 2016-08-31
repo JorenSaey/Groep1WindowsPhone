@@ -90,13 +90,17 @@ namespace PackingListApp.Views
         {
             ItemViewModel ivm = (sender as Button).DataContext as ItemViewModel;
             Item item = ivm.Item;
-            item.Add();
-            ivm.Ratio = item.AmountCollected + "/" + item.AmountNeeded;
             itemRepo.updateAmountNeeded(item.Id, 1);
+            ivm.Ratio = item.AmountCollected + "/" + item.AmountNeeded;
+            InitItems();
         }
         private void Minus_One(object sender, RoutedEventArgs e)
         {
-
+            ItemViewModel ivm = (sender as Button).DataContext as ItemViewModel;
+            Item item = ivm.Item;
+            itemRepo.updateAmountNeeded(item.Id, -1);
+            ivm.Ratio = item.AmountCollected + "/" + item.AmountNeeded;
+            InitItems();
         }
         private async void InitItems()
         {

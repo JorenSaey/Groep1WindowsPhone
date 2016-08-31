@@ -11,18 +11,14 @@ namespace PackingListService.DataObjects
         //ATTRIBUTEN
         //public Guid Id { get; set; } bestaat al
         public string Email { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
         public string Password { get; set; }
         public virtual IList<Travel> Travels { get; set; }
         //CONSTRUCTOR
         public User() { }
-        public User(string email, string firstname, string lastname,string password)
+        public User(string email, string password)
         {
             Id = email;
             Email = email;
-            FirstName = firstname;
-            LastName = lastname;
             Password = password;
             Travels = new List<Travel>();
         }

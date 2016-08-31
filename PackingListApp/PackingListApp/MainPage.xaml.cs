@@ -35,7 +35,11 @@ namespace PackingListApp
                 else
                     TxtError.Text = "Aanmeldgegevens incorrect";
             }
-            catch(MobileServiceInvalidOperationException ex)
+            catch (ArgumentException ex)
+            {
+                TxtError.Text = ex.Message;
+            }
+            catch (MobileServiceInvalidOperationException ex)
             {
                 TxtError.Text = "Kan geen verbinding maken met de service";
             }     

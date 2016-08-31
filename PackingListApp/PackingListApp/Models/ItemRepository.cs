@@ -35,7 +35,8 @@ namespace PackingListApp.Models
             if (i == 1)
             {
                 item.Add();
-            } else
+            }
+            else
             {
                 item.Remove();
             }
