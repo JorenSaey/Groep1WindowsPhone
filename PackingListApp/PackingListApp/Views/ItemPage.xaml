@@ -28,9 +28,9 @@
                 <DataTemplate>
                     <StackPanel>
                         <toolkit:ContextMenuService.ContextMenu>
-                            <toolkit:ContextMenu IsZoomEnabled="True" x:Name="ContextMenu" >
-                                <toolkit:MenuItem x:Name="MenuAdd" Header="Voeg item toe" Click="Add_Item_Click"/>
-                                <toolkit:MenuItem x:Name="MenuRename" Header="Wijzig categorie" Click="Rename_Categorie_Click"/>
+                            <toolkit:ContextMenu IsZoomEnabled="True" x:Name="ContextMenu" Background="Gray">
+                                <toolkit:MenuItem x:Name="MenuAdd" Header="Voeg item toe" Click="Add_Item_Click" Foreground="White" />
+                                <toolkit:MenuItem x:Name="MenuRename" Header="Wijzig categorie" Click="Rename_Categorie_Click" Foreground="White"/>
                             </toolkit:ContextMenu>
                         </toolkit:ContextMenuService.ContextMenu>
                         <TextBlock Text="{Binding Name}" FontSize="24"/>
@@ -39,8 +39,8 @@
                                 <DataTemplate>                                    
                                     <StackPanel>
                                         <toolkit:ContextMenuService.ContextMenu>
-                                            <toolkit:ContextMenu IsZoomEnabled="True" x:Name="ContextMenuItem" >
-                                                <toolkit:MenuItem Header="Verwijder item" Click="Remove_Item_Click"/>
+                                            <toolkit:ContextMenu IsZoomEnabled="True" x:Name="ContextMenuItem" Background="Gray">
+                                                <toolkit:MenuItem Header="Verwijder item" Click="Remove_Item_Click" Foreground="White"/>
                                             </toolkit:ContextMenu>
                                         </toolkit:ContextMenuService.ContextMenu>
                                         <Grid>
