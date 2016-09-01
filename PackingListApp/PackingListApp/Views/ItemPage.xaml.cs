@@ -77,7 +77,25 @@ namespace PackingListApp.Views
         }
         private void Rename_Categorie_Click(object sender, RoutedEventArgs e)
         {
-
+            this.IsEnabled = false;
+            this.Opacity = 0.2;
+            Popup add = new Popup();
+            CategorieViewModel cvm = (sender as MenuItem).DataContext as CategorieViewModel;
+            Categorie ca = new Categorie() { Id = cvm.Id };
+            CategoriePopupRename popup = new CategoriePopupRename(ca,categories);
+            popup.Width = Application.Current.Host.Content.ActualWidth - 40;
+            add.Child = popup;
+            add.IsOpen = true;
+            add.VerticalOffset = 50;
+            add.HorizontalOffset = 20;
+            add.Closed += (s1, e1) =>
+            {
+                this.Opacity = 1;
+                this.IsEnabled = true;
+                //RefreshItems();
+                
+            };
+            popup.TxtName.Text = cvm.Name;
         }
         private void Remove_Item_Click(object sender, RoutedEventArgs e)
         {
@@ -108,5 +126,14 @@ namespace PackingListApp.Views
             categories = new ObservableCollection<CategorieViewModel>(activeTravel.Categories.Select(c => new CategorieViewModel(c)).ToList());
             CategorieContainer.DataContext = categories;
         }
+        //private async void RefreshItems()
+        //{
+        //    categories.Clear();
+        //    activeTravel = await travelRepo.Find(activeTravel.Id);
+        //    foreach (Categorie c in activeTravel.Categories)
+        //    {
+        //        categories.Add(new CategorieViewModel(c));
+        //    }
+        //}
     }
 }

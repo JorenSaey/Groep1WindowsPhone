@@ -121,6 +121,9 @@
     <Compile Include="Views\PopUps\CategoriePopup.xaml.cs">
       <DependentUpon>CategoriePopup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PopUps\CategoriePopupRename.xaml.cs">
+      <DependentUpon>CategoriePopupRename.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PopUps\ItemPopup.xaml.cs">
       <DependentUpon>ItemPopup.xaml</DependentUpon>
     </Compile>
@@ -151,6 +154,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PopUps\CategoriePopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PopUps\CategoriePopupRename.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

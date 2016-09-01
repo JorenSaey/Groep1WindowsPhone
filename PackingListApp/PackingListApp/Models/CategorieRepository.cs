@@ -28,11 +28,12 @@ namespace PackingListApp.Models
             Categorie categorie = await categorieTable.LookupAsync(id);
             return categorie;
         }
-        //public async void UpdateTravel(string id, string name, string date)
-        //{
-        //    Travel travel = await Find(id);
-        //    await travelTable.DeleteAsync(travel);
-        //    CreateTravel(name, date, travel.UserId);
-        //}
+        public async void UpdateCategorie(string id, string name)
+        {
+            Categorie categorie = await Find(id);
+            categorie.Items = null;
+            categorie.Name = name;
+            await categorieTable.UpdateAsync(categorie);
+        }
     }
 }
