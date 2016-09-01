@@ -28,7 +28,7 @@ namespace PackingListService.DataObjects
         //ANDERE METHODES
         public void AddCategorie(string name)
         {
-            Categorie categorie = new Categorie(Id + name, name) { TravelId = this.Id};
+            Categorie categorie = new Categorie(Guid.NewGuid().ToString(), name) { TravelId = this.Id};
             Categories.Add(categorie);
         }
         public void RemoveCategorie(string name)
