@@ -26,8 +26,8 @@
                     <Border BorderBrush="Black" BorderThickness="5" Background="Gray" CornerRadius="8">
                         <Grid Hold="ListBoxItem_Hold">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="280"/>
-                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="270"/>
+                                <ColumnDefinition Width="60"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -35,7 +35,7 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Column="0" Grid.Row="0" x:Name="TravelName" Text="{Binding Name}" FontSize="24" VerticalAlignment="Center" Margin="5,0,0,0"/>
-                            <TextBlock Grid.Column="1" Grid.RowSpan="2" x:Name="TravelPercent" Text="0%" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="1" Grid.RowSpan="2" x:Name="TravelPercent" Text="{Binding Percent}" Foreground="{Binding Color}" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                             <Button Grid.Column="2" Grid.RowSpan="2" BorderThickness="0" Click="NavigateToItemPage">
                                 <Image Width="50">
                                     <Image.Source>

@@ -19,6 +19,7 @@
             <TextBox x:Name="TxtName" />
             <TextBlock  Text="Datum" FontSize="24"/>
             <TextBox x:Name="txtDate" />
+            <TextBlock x:Name="TxtError" Text="" Foreground="Red" FontSize="18" Margin="17,0"/>
             <StackPanel  Orientation="Horizontal">
                 <Button Content="Ok" Click="Ok_Click"/>
                 <Button Content="Annuleer" Click="Cancel_Click"/>

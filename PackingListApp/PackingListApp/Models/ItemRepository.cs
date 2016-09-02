@@ -29,7 +29,7 @@ namespace PackingListApp.Models
             return item;
         }
 
-        public async void updateAmountNeeded(string id, int i)
+        public async Task updateAmountNeeded(string id, int i)
         {
             Item item = await itemTable.LookupAsync(id);
             if (i == 1)

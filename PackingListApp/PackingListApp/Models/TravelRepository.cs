@@ -28,13 +28,14 @@ namespace PackingListApp.Models
             Travel travel = await travelTable.LookupAsync(id);
             return travel;
         }
-        public async void UpdateTravel(string id,string name, string date)
+        public async Task UpdateTravel(string id, string name, string date)
         {
-            Travel travel = await Find(id);
+            //Travel travel = await Find(id);
+            //travel.Id = id;
+            //travel.Name = name;
+            //travel.Date = date;
+            Travel travel = new Travel { Id = id, Name = name, Date = date };
             travel.Categories = null;
-            travel.Id = id;
-            travel.Name = name;
-            travel.Date = date;
             await travelTable.UpdateAsync(travel);
         }
     }

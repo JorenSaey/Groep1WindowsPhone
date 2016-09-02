@@ -30,12 +30,15 @@ namespace PackingListApp.ViewModels
         public string Name { get; set; }
         public string Ratio { get; set; }
         public string CategorieId { get; set; }
+
+        public string Color { get; set; }
         public ItemViewModel(Item item)
         {
             Id = item.Id;
             Name = item.Name;
             Ratio= item.AmountCollected+"/"+item.AmountNeeded;
             CategorieId = item.CategorieId;
+            Color = item.IsCompleted() ? "LightGreen" : "White";
             this.Item = item;
         }
     }

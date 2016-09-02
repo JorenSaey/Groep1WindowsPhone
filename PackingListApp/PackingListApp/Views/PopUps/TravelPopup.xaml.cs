@@ -30,18 +30,21 @@ namespace PackingListApp.Views.PopUps
         {
             try
             {
-                travelRepo.CreateTravel(TxtName.Text, txtDate.Text, activeUser.Id);
-                travels.Add(new Travel() { Id = activeUser.Id + TxtName.Text, Name = TxtName.Text, Date = txtDate.Text, UserId = activeUser.Id });
+                if (TxtName.Text == "" || txtDate.Text == "")
+                {
+                    TxtError.Text = "Beide velden moeten ingevuld zijn!";
+                }
+                else
+                {
+                    travelRepo.CreateTravel(TxtName.Text, txtDate.Text, activeUser.Id);
+                    travels.Add(new Travel() { Id = activeUser.Id + TxtName.Text, Name = TxtName.Text, Date = txtDate.Text, UserId = activeUser.Id });
+                    ClosePopup();
+                }
             }
             catch (MobileServiceInvalidOperationException ex)
             {
                 
-            }
-            finally
-            {
-                ClosePopup();
-            }
-                         
+            }                         
         }
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {

@@ -21,6 +21,7 @@
             <TextBox x:Name="TxtName" />
             <TextBlock  Text="Aantal nodig" FontSize="24"/>
             <TextBox InputScope="Number" x:Name="txtAmountNeeded" />
+            <TextBlock x:Name="TxtError" Text="" Foreground="Red" FontSize="18" Margin="17,0"/>
             <StackPanel  Orientation="Horizontal">
                 <Button Content="Ok" Click="Ok_Click"/>
                 <Button Content="Annuleer" Click="Cancel_Click"/>

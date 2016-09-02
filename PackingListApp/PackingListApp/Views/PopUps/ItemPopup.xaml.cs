@@ -31,23 +31,31 @@ namespace PackingListApp.Views.PopUps
         {
             try
             {
-                itemRepo.CreateItem(TxtName.Text,Int32.Parse(txtAmountNeeded.Text),activeCategorie.Id);
-                items.Add(new ItemViewModel(new Item()
+                if (TxtName.Text == "" || txtAmountNeeded.Text == "")
                 {
-                    Id = activeCategorie.Id + TxtName.Text,
-                    AmountNeeded = Int32.Parse(txtAmountNeeded.Text),
-                    AmountCollected = 0,
-                    Name = TxtName.Text,
-                    CategorieId = activeCategorie.Id
-                }));
+                    TxtError.Text = "Beide velden moeten ingevuld zijn!!";
+                }
+                else
+                {
+                    itemRepo.CreateItem(TxtName.Text, Int32.Parse(txtAmountNeeded.Text), activeCategorie.Id);
+                    items.Add(new ItemViewModel(new Item()
+                    {
+                        Id = activeCategorie.Id + TxtName.Text,
+                        AmountNeeded = Int32.Parse(txtAmountNeeded.Text),
+                        AmountCollected = 0,
+                        Name = TxtName.Text,
+                        CategorieId = activeCategorie.Id
+                    }));
+                    ClosePopup();
+                }
+            }
+            catch (FormatException ex)
+            {
+                TxtError.Text = "Aantal nodig moet een getal zijn!";
             }
             catch (MobileServiceInvalidOperationException ex)
             {
 
-            }
-            finally
-            {
-                ClosePopup();
             }
 
         }

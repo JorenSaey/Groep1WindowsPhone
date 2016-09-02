@@ -32,6 +32,10 @@ namespace PackingListApp.Views.PopUps
             try
             {
                 categorieRepo.UpdateCategorie(activeCategorie.Id, TxtName.Text);
+                CategorieViewModel cat = categories.Where(c => c.Id == activeCategorie.Id).FirstOrDefault();
+                int loc = categories.IndexOf(cat);
+                cat.Name = TxtName.Text;
+                categories[loc] = cat;
             }
             catch (MobileServiceInvalidOperationException ex)
             {

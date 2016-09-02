@@ -19,6 +19,7 @@
             <TextBlock Text="Maak nieuwe categorie" FontSize="32"/>
             <TextBlock Text="Naam" FontSize="24"/>
             <TextBox x:Name="TxtName" />
+            <TextBlock x:Name="TxtError" Text="" Foreground="Red" FontSize="18" Margin="17,0"/>
             <StackPanel  Orientation="Horizontal">
                 <Button Content="Ok" Click="Ok_Click"/>
                 <Button Content="Annuleer" Click="Cancel_Click"/>

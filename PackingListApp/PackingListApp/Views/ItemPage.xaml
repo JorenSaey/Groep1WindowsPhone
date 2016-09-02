@@ -39,9 +39,10 @@
                                 <toolkit:ContextMenu IsZoomEnabled="True" x:Name="ContextMenu" >
                                     <toolkit:MenuItem x:Name="MenuAdd" Header="Voeg item toe" Click="Add_Item_Click"/>
                                     <toolkit:MenuItem x:Name="MenuRename" Header="Wijzig categorie" Click="Rename_Categorie_Click"/>
+                                    <toolkit:MenuItem x:Name="MenuRemove" Header="Verwijder categorie" Click="Remove_Categorie_Click"/>
                                 </toolkit:ContextMenu>
                             </toolkit:ContextMenuService.ContextMenu>
-                            <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Name}" FontSize="24" Padding="5,0,0,0"/>
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Name}" Foreground="White" FontSize="24" Padding="5,0,0,0"/>
                             <ListBox Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Items}" x:Name="ItemContainer" Margin="1,0,0,0" Padding="5,0,0,0" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
@@ -61,8 +62,8 @@
                                                     <ColumnDefinition Width="*"/>
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
-                                                <TextBlock Grid.Column="0" Text="{Binding Name}" Padding="5,0,0,0" FontSize="20" VerticalAlignment="Center" />
-                                                <TextBlock Grid.Column="1" Text="{Binding Ratio}" VerticalAlignment="Center"/>
+                                                <TextBlock Grid.Column="0" Text="{Binding Name}" Foreground="{Binding Color}" Padding="5,0,0,0" FontSize="20" VerticalAlignment="Center" />
+                                                <TextBlock Grid.Column="1" Text="{Binding Ratio}" Foreground="{Binding Color}" VerticalAlignment="Center"/>
                                                 <Button HorizontalContentAlignment="Center" Width="75" Grid.Column="2" Content="-" VerticalAlignment="Center" Click="Minus_One" HorizontalAlignment="Right"/>
                                                 <Button HorizontalContentAlignment="Center" Width="75" Grid.Column="3" Content="+" VerticalAlignment="Center" Click="Plus_One" HorizontalAlignment="Right"/>
                                             </Grid>
@@ -82,13 +83,6 @@
                 </Style>
             </ListBox.Resources>
         </ListBox>
-        <Button Grid.Row="2" Width="100" HorizontalAlignment="Left" Margin="-10,0" Click="Remove_Click">
-            <Image Width="30" Height="30">
-                <Image.Source>
-                    <BitmapImage DecodePixelWidth="200"  UriSource="/Assets/Images/remove.png" />
-                </Image.Source>
-            </Image>
-        </Button>
         <Button Grid.Row="2" Width="100" HorizontalAlignment="Right" Margin="-10,0" Click="Add_Click">
             <Image Width="30" Height="30">
                 <Image.Source>

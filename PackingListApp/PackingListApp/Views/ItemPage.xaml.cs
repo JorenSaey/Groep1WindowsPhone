@@ -22,6 +22,7 @@ namespace PackingListApp.Views
         private CategorieRepository categorieRepo;
         private ItemRepository itemRepo;
         private ObservableCollection<CategorieViewModel> categories;
+
         public ItemPage()
         {
             InitializeComponent();
@@ -48,13 +49,9 @@ namespace PackingListApp.Views
             {
                 this.Opacity = 1;
                 this.IsEnabled = true;
+                NavigationService.Navigate(new Uri("/Views/ItemPage.xaml?id=" + activeTravel.Id + "&refresh=" + categories.Count, UriKind.Relative));
+                NavigationService.RemoveBackEntry();
             };
-        }
-        private void Remove_Click(object sender, RoutedEventArgs e)
-        {
-            CategorieViewModel categorie = (CategorieViewModel)CategorieContainer.SelectedItem;
-            categorieRepo.DeleteCategorie(categorie.Id);
-            categories.Remove(categorie);
         }
         private void Add_Item_Click(object sender, RoutedEventArgs e)
         {
@@ -97,6 +94,12 @@ namespace PackingListApp.Views
             };
             popup.TxtName.Text = cvm.Name;
         }
+        private void Remove_Categorie_Click(object sender, RoutedEventArgs e)
+        {
+            CategorieViewModel cvm = (sender as MenuItem).DataContext as CategorieViewModel;
+            categorieRepo.DeleteCategorie(cvm.Id);
+            categories.Remove(cvm);
+        }
         private void Remove_Item_Click(object sender, RoutedEventArgs e)
         {
             ItemViewModel ivm = (sender as MenuItem).DataContext as ItemViewModel;
@@ -104,19 +107,22 @@ namespace PackingListApp.Views
             itemRepo.DeleteItem(ivm.Id);
             cvm.Items.Remove(ivm);
         }
-        private void Plus_One(object sender, RoutedEventArgs e)
+        private async void Plus_One(object sender, RoutedEventArgs e)
         {
             ItemViewModel ivm = (sender as Button).DataContext as ItemViewModel;
             Item item = ivm.Item;
-            itemRepo.updateAmountNeeded(item.Id, 1);
-            ivm.Ratio = item.AmountCollected + "/" + item.AmountNeeded;
+            await itemRepo.updateAmountNeeded(item.Id, 1);
+            NavigationService.Navigate(new Uri("/Views/ItemPage.xaml?id=" + activeTravel.Id + "&refresh=" + item.Name + item.AmountCollected, UriKind.Relative));
+            NavigationService.RemoveBackEntry();
         }
-        private void Minus_One(object sender, RoutedEventArgs e)
+        
+        private async void Minus_One(object sender, RoutedEventArgs e)
         {
             ItemViewModel ivm = (sender as Button).DataContext as ItemViewModel;
             Item item = ivm.Item;
-            itemRepo.updateAmountNeeded(item.Id, -1);
-            ivm.Ratio = item.AmountCollected + "/" + item.AmountNeeded;
+            await itemRepo.updateAmountNeeded(item.Id, -1);
+            NavigationService.Navigate(new Uri("/Views/ItemPage.xaml?id=" + activeTravel.Id + "&refresh=" + item.Name + item.AmountCollected, UriKind.Relative));
+            NavigationService.RemoveBackEntry();
         }
         private async void InitItems()
         {
@@ -126,14 +132,5 @@ namespace PackingListApp.Views
             categories = new ObservableCollection<CategorieViewModel>(activeTravel.Categories.Select(c => new CategorieViewModel(c)).ToList());
             CategorieContainer.DataContext = categories;
         }
-        //private async void RefreshItems()
-        //{
-        //    categories.Clear();
-        //    activeTravel = await travelRepo.Find(activeTravel.Id);
-        //    foreach (Categorie c in activeTravel.Categories)
-        //    {
-        //        categories.Add(new CategorieViewModel(c));
-        //    }
-        //}
     }
 }

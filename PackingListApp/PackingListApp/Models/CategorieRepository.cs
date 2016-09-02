@@ -13,7 +13,7 @@ namespace PackingListApp.Models
         private static IMobileServiceTable<Categorie> categorieTable =
             App.MobileService.GetTable<Categorie>();
 
-        public async void CreateCategorie(string name, string travelId)
+        public async Task CreateCategorie(string name, string travelId)
         {
             Categorie categorie = new Categorie() { Name = name,  TravelId = travelId };
             await categorieTable.InsertAsync(categorie);

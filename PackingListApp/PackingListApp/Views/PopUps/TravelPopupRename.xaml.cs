@@ -26,16 +26,16 @@ namespace PackingListApp.Views.PopUps
             this.travelRepo = new TravelRepository();
             this.travels = travels;
         }
-        private void Ok_Click(object sender, RoutedEventArgs e)
+        private async void Ok_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                travelRepo.UpdateTravel(activeTravel.Id, TxtName.Text, txtDate.Text);
+                await travelRepo.UpdateTravel(activeTravel.Id, TxtName.Text, txtDate.Text);
                 Travel tr = travels.Where(t => t.Id == activeTravel.Id).FirstOrDefault();
-                travels.Remove(tr);
+                int loc = travels.IndexOf(tr);
                 tr.Name = TxtName.Text;
                 tr.Date = txtDate.Text;
-                travels.Add(tr);
+                travels[loc] = tr;
             }
             catch (MobileServiceInvalidOperationException ex)
             {

@@ -55,6 +55,7 @@ namespace PackingListApp.Views
         }
         private void Add_Click(object sender, RoutedEventArgs e)
         {
+            int travelCount = travels.Count;
             this.IsEnabled = false;
             this.Opacity = 0.2;
             Popup add = new Popup();
@@ -68,6 +69,10 @@ namespace PackingListApp.Views
             {
                 this.Opacity = 1;
                 this.IsEnabled = true;
+                NavigationService.Navigate(new Uri("/Views/TravelPage.xaml?email=" + activeUser.Email + "&refresh=" + travels.Count, UriKind.Relative));
+                if (travelCount != travels.Count) {
+                    NavigationService.RemoveBackEntry();
+                }
             };
         }
         private void Remove_Click(object sender, RoutedEventArgs e)

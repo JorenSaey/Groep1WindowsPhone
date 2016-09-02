@@ -27,20 +27,24 @@ namespace PackingListApp.Views.PopUps
             this.categorieRepo = new CategorieRepository();
             this.categories = categories;
         }
-        private void Ok_Click(object sender, RoutedEventArgs e)
+        private async void Ok_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                categorieRepo.CreateCategorie(TxtName.Text, activeTravel.Id);
+                if (TxtName.Text == "")
+                {
+                    TxtError.Text = "Categorie naam kan niet leeg zijn!";
+                }
+                else
+                {
+                await categorieRepo.CreateCategorie(TxtName.Text, activeTravel.Id);
                 categories.Add(new CategorieViewModel(new Categorie() { Id = activeTravel.Id + TxtName.Text, Name = TxtName.Text, TravelId = activeTravel.Id }));
+                ClosePopup();
+                }
             }
             catch (MobileServiceInvalidOperationException ex)
             {
 
-            }
-            finally
-            {
-                ClosePopup();
             }
 
         }
