@@ -33,9 +33,11 @@ namespace PackingListApp.Views.PopUps
                 await travelRepo.UpdateTravel(activeTravel.Id, TxtName.Text, txtDate.Text);
                 Travel tr = travels.Where(t => t.Id == activeTravel.Id).FirstOrDefault();
                 int loc = travels.IndexOf(tr);
+                tr.Categories = activeTravel.Categories;
                 tr.Name = TxtName.Text;
                 tr.Date = txtDate.Text;
                 travels[loc] = tr;
+                ClosePopup();
             }
             catch (MobileServiceInvalidOperationException ex)
             {
@@ -43,7 +45,6 @@ namespace PackingListApp.Views.PopUps
             }
             finally
             {
-                ClosePopup();
             }
 
         }

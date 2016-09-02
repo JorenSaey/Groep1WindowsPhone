@@ -24,9 +24,20 @@ namespace PackingListApp.Views
             try
             {
                 BtnLogin.IsEnabled = false;
-                new UserRepository().Register(TxtboxUsername.Text, PwBoxPassword.Password, PwBoxConfirmPassword.Password);
-                TxtError.Text = "";
-                NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+                if (TxtboxUsername.Text == null || TxtboxUsername.Text.Equals("") || PwBoxPassword.Password == null || PwBoxConfirmPassword.Password.Equals(""))
+                {
+                    throw new ArgumentException("Alle velden moeten ingevuld zijn!");
+                }
+                if (PwBoxPassword.Password != PwBoxConfirmPassword.Password)
+                {
+                    throw new ArgumentException("Wachtwoorden komen niet overeen.");
+                }
+                else
+                {
+                    new UserRepository().Register(TxtboxUsername.Text, PwBoxPassword.Password, PwBoxConfirmPassword.Password);
+                    TxtError.Text = "";
+                    NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+                }
             }
             catch (ArgumentException ex)
             {

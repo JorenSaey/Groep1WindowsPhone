@@ -25,6 +25,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -36,8 +37,8 @@
         <PasswordBox Grid.Row="5" Grid.Column="0" x:Name="PwBoxPassword" HorizontalAlignment="Stretch" VerticalAlignment="Top" />
         <TextBlock Grid.Row="6" Grid.Column="0" x:Name="TxtConfirmPassword" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Bevestig wachtwoord" VerticalAlignment="Top" Height="38" FontSize="24"/>
         <PasswordBox Grid.Row="7" Grid.Column="0" x:Name="PwBoxConfirmPassword" HorizontalAlignment="Stretch" VerticalAlignment="Top" />
-        <TextBlock Grid.Row="6"  Grid.Column="0" x:Name="TxtError" Text="" Foreground="Red" FontSize="18" Margin="17,0"/>
-        <Button Grid.Row="8" Grid.Column="0" x:Name="BtnLogin" Content="Registreer" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0" Click="Registreer"/>
+        <TextBlock Grid.Row="8"  Grid.Column="0" x:Name="TxtError" Text="" Foreground="Red" FontSize="18" Margin="17,0"/>
+        <Button Grid.Row="9" Grid.Column="0" x:Name="BtnLogin" Content="Registreer" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0" Click="Registreer"/>
     </Grid>
 
 </phone:PhoneApplicationPage>
